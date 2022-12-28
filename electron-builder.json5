@@ -30,8 +30,9 @@
     "artifactName": "${productName}_${version}.${ext}"
   },
   "linux": {
+    "icon": "public/favicon-256x256.png",
+    "category": "Utility",
     "target": [
-      "snap",
       "AppImage"
     ]
   },
