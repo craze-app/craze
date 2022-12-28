@@ -29,6 +29,12 @@
     ],
     "artifactName": "${productName}_${version}.${ext}"
   },
+  "linux": {
+    "target": [
+      "snap",
+      "AppImage"
+    ]
+  },
   "nsis": {
     "oneClick": false,
     "perMachine": false,
