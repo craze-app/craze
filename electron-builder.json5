@@ -31,7 +31,6 @@
   },
   "linux": {
     "icon": "public/favicon-256x256.png",
-    "category": "Utility",
     "target": [
       "AppImage"
     ]
