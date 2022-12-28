@@ -1,0 +1,67 @@
+.draggable-area {
+  -webkit-app-region: drag;
+}
+
+.titlebar {
+  background: red;
+}
+
+.sidebar {
+  -webkit-app-region: drag;
+  width: 250px;
+  height: calc(100vh - 40px);
+  color: #fff;
+  button {
+    color: #fff;
+    &:hover {
+      background: rgba(0,0,0,0.1);
+    }
+  }
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-inside {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.main-layout-content {
+  height: 100vh;
+  flex: 1;
+  background: #1A232C;
+}
+
+.sidebar-search {
+  margin: 0 10px 10px 10px;
+  input {
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+  }
+}
+
+.sidebar-search-right {
+  font-size: 10px;
+  color: #ddd;
+  margin-right: 8px;
+}
+
+.scroll-bar::-webkit-scrollbar-track
+{
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.scroll-bar::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: transparent;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: #626B72;
+}
