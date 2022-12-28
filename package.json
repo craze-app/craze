@@ -13,6 +13,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && electron-builder",
+    "build:vite": "tsc && vite build",
     "build:macos": "tsc && vite build && electron-builder -m",
     "build:win": "tsc && vite build && electron-builder -w",
     "build:linux": "tsc && vite build && electron-builder -l",
