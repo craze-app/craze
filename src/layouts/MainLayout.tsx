@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import Sidebar from "../components/partials/Sidebar";
+import Sidebar from "../components/partials/sidebar/Sidebar";
 import useWindowFocus from "../hooks/utils/useWindowFocus";
 
 type MainLayoutProps = {
@@ -20,7 +20,7 @@ const MainLayout = ({children}: MainLayoutProps) => {
   }, [isFocused])
 
   return (
-    <div style={{width: "100%", display: "flex"}}>
+    <div style={{width: "100%", height: "100vh", display: "flex"}}>
       <Sidebar backgroundColor={sidebarBackground}  />
       <div className={"main-layout-content"}>
         {children}

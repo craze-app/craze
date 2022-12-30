@@ -5,8 +5,8 @@ import {
   Link
 } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import SettingsPage from "./pages/SettingsPage";
 import MainLayout from "./layouts/MainLayout";
+import FeaturePage from "./pages/Feature";
 
 const Router = () => {
   return (
@@ -14,7 +14,7 @@ const Router = () => {
       <Switch>
         <MainLayout>
           <Route exact path={"/"} component={HomePage} />
-          <Route path={"/settings"} component={SettingsPage} />
+          <Route path={"/features/:id"} component={FeaturePage} />
         </MainLayout>
       </Switch>
     </HashRouter>
