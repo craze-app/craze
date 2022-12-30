@@ -8,6 +8,7 @@ const Sidebar = ({backgroundColor}: { backgroundColor: string }) => {
 
   return (
     <div className={styles.sidebar} style={{background: backgroundColor}}>
+      <div className={cn(styles.sidebarHeader, "draggable-area")} />
       <div className={styles.sidebarSearch}>
         <input
           className={styles.sidebarSearchInput}
@@ -20,12 +21,13 @@ const Sidebar = ({backgroundColor}: { backgroundColor: string }) => {
       <div className={cn(styles.sidebarInside, styles.scrollbar)}>
         {features.map(Feature => (
           <Link key={Feature.id} to={`/features/${Feature.id}`} className={styles.menuItem}>
-            <Feature.sidebarIcon className={""} size={16} />
+            <Feature.sidebarIcon className={""} size={16}/>
             {Feature.title}
           </Link>
         ))}
       </div>
     </div>
+
   )
 }
 

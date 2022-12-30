@@ -1,6 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {features} from "../features";
 import {useMemo} from "react";
+import FeatureHeader from "../components/organisms/feature-header/FeatureHeader";
 
 const FeaturePage = () => {
 
@@ -14,7 +15,12 @@ const FeaturePage = () => {
     return null
   }
 
-  return <feature.component key={feature.id} />
+  return <>
+    <FeatureHeader feature={feature} />
+    <div style={{flex: 1, display: "flex", flexDirection: "column", padding: 12}}>
+      <feature.component key={feature.id} />
+    </div>
+  </>
 }
 
 export default FeaturePage

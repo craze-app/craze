@@ -1,0 +1,20 @@
+.header {
+  height: 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 16px;
+  margin-bottom: 6px;
+}
+
+.featureName {
+  background: #333;
+  height: 26px;
+  padding: 0 80px;
+  color: #999;
+  font-size: 12px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}

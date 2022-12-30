@@ -53,5 +53,9 @@ a {
 
 button {
     border: none;
-    cursor: pointer;
+    cursor: default !important;
+}
+
+a {
+    cursor: default !important;
 }
