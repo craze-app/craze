@@ -12,3 +12,10 @@
   height: 1px !important;
   margin: 12px 0;
 }
+
+.vertical > .reflex-splitter {
+  border: none !important;
+  cursor: row-resize;
+  height: 100%;
+  margin: 0 12px;
+}
