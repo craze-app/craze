@@ -48,7 +48,7 @@ const JsonFormatter = () => {
                   name="json-formatter-input"
                   editorProps={{$blockScrolling: true}}
                   wrapEnabled={true}
-                  placeholder={"Type URL..."}
+                  placeholder={"Type JSON..."}
               />
             </ReflexElement>
             <ReflexSplitter />
