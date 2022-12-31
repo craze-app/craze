@@ -45,7 +45,7 @@ const JsonFormatter = () => {
                   theme="one_dark"
                   value={inputText}
                   onChange={text => setInputText(text)}
-                  name="url-encode-decode-input"
+                  name="json-formatter-input"
                   editorProps={{$blockScrolling: true}}
                   wrapEnabled={true}
                   placeholder={"Type URL..."}
@@ -61,11 +61,11 @@ const JsonFormatter = () => {
                   mode="json"
                   theme="one_dark"
                   value={outputText}
-                  name="url-encode-decode-output"
+                  name="json-formatter-output"
                   editorProps={{$blockScrolling: true}}
                   wrapEnabled={true}
                   showPrintMargin={false}
-                  placeholder={"Format JSON"}
+                  placeholder={"Formatted JSON"}
               />
             </ReflexElement>
           </ReflexContainer>
