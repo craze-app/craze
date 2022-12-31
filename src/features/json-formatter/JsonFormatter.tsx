@@ -14,8 +14,7 @@ const JsonFormatter = () => {
 
   const outputText = useMemo(() => {
     try {
-      // @TODO: JSON parse edildikten sonra string'e çevirilmesi gerekiyor.
-      return String(JSON.parse(inputText));
+      return JSON.stringify(JSON.parse(inputText), null, 2);
     } catch (err) {
       console.log(err)
       return "Invalid Input"
