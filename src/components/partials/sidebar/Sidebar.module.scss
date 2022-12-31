@@ -1,0 +1,80 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  a {
+    color: #fff;
+    &:hover {
+      background: rgba(0,0,0,0.1);
+    }
+  }
+}
+
+.sidebarHeader {
+  height: 40px;
+}
+
+.sidebarInside {
+  flex: 1;
+  overflow-y: auto;
+  .menuItem {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 34px;
+    padding: 0 16px;
+    font-size: 13px;
+    svg {
+      margin-right: 8px;
+    }
+  }
+}
+
+.sidebarSearch {
+  margin: 0 10px 10px 10px;
+  position: relative;
+  display: flex;
+  .sidebarSearchInput {
+    flex: 1;
+    height: 30px;
+    padding: 0 48px 0 12px;
+    border-radius: 100px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    color: #f6f6f6;
+    font-size: 14px;
+    outline: 0;
+    &::placeholder {
+      color: #aaa;
+    }
+  }
+}
+
+.sidebarSearchRight {
+  position: absolute;
+  top: 9px;
+  right: 4px;
+  font-size: 12px;
+  color: #ddd;
+  margin-right: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track
+{
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: transparent;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-color: #626B72;
+}

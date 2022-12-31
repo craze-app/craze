@@ -1,0 +1,14 @@
+@import "react-reflex/styles.css";
+
+.reflex-container > .reflex-splitter {
+  background-color: #444 !important;
+  z-index: 100;
+}
+
+.horizontal > .reflex-splitter {
+  border: none !important;
+  cursor: row-resize;
+  width: 100%;
+  height: 1px !important;
+  margin: 12px 0;
+}

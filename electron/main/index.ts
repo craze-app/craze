@@ -76,6 +76,14 @@ async function createWindow() {
     if (url.startsWith('https:')) shell.openExternal(url)
     return { action: 'deny' }
   })
+
+  app.on('browser-window-focus', () => {
+    win.webContents.send('focused')
+  })
+
+  app.on('browser-window-blur', () => {
+    win.webContents.send('blurred')
+  })
 }
 
 app.whenReady().then(createWindow)
