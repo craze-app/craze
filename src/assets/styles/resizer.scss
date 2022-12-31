@@ -9,6 +9,14 @@
   border: none !important;
   cursor: row-resize;
   width: 100%;
-  height: 1px !important;
+  height: 2px !important;
   margin: 12px 0;
+}
+
+.vertical > .reflex-splitter {
+  border: none !important;
+  cursor: row-resize;
+  height: 100%;
+  width: 2px !important;
+  margin: 0 12px;
 }
