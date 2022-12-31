@@ -1,13 +1,17 @@
+$header-height: 40px;
+
 .header {
-  height: 40px;
+  height: $header-height;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   padding: 0 16px;
   margin-bottom: 6px;
+  position: relative;
 }
 
 .featureName {
+  position: relative;
   background: #333;
   height: 26px;
   padding: 0 80px;
@@ -17,4 +21,56 @@
   display: flex;
   align-items: center;
   user-select: none;
+  .favoriteButton {
+    position: absolute;
+    right: 2px;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    outline: 0;
+    background: transparent;
+    color: #ddd;
+  }
+  .favoriteButtonActive {
+    svg {
+      fill: #ddd;
+    }
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  position: absolute;
+  button {
+    width: 32px;
+    height: 26px;
+    background: transparent;
+    outline: 0;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ddd;
+    &.active {
+      svg {
+        fill: #ddd;
+      }
+    }
+  }
+}
+
+.leftButtons {
+  left: 8px;
+  bottom: 0;
+}
+
+.rightButtons {
+  right: 8px;
+  bottom: 0;
 }
