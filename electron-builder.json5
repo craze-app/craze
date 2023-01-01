@@ -29,6 +29,12 @@
     ],
     "artifactName": "${productName}_${version}.${ext}"
   },
+  "linux": {
+    "icon": "public/favicon-256x256.png",
+    "target": [
+      "AppImage"
+    ]
+  },
   "nsis": {
     "oneClick": false,
     "perMachine": false,
