@@ -1,9 +1,9 @@
-import {useEffect, useMemo, useRef, useState} from "react";
+import {useMemo, useState} from "react";
 import AceEditor from "react-ace";
 import {ReflexContainer, ReflexElement, ReflexSplitter} from "react-reflex";
-
 import styles from './RegexTester.module.scss';
-
+import {IconAlertCircle} from "@tabler/icons";
+import {getCharPositionInText} from "../../helpers/string";
 import InputBar from "../../components/organisms/input-bar/InputBar";
 import OutputBar from "../../components/organisms/output-bar/OutputBar";
 import {IMarker} from "react-ace/src/types";
@@ -13,8 +13,6 @@ import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import 'ace-builds/src-min-noconflict/ext-searchbox';
-import {IconAlertCircle} from "@tabler/icons";
-import {getCharPositionInText} from "../../helpers/string";
 
 const SAMPLE_DATA = {
   regex: "l[a-z]+",
