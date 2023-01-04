@@ -13,6 +13,8 @@ import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import 'ace-builds/src-min-noconflict/ext-searchbox';
+import {RegexTesterService} from "./RegexTester.service";
+import {RegexFlags, RegexTestResult} from "./RegexTester.types";
 
 const SAMPLE_DATA = {
   regex: "l[a-z]+",
@@ -31,53 +33,18 @@ software like Aldus PageMaker including
 versions of Lorem Ipsum`
 }
 
-type Flags = {
-  g: boolean
-  m: boolean
-  i: boolean
-}
-
 const RegexTester = () => {
   const [regexQuery, setRegexQuery] = useState<string>('')
-  const [flags, setFlags] = useState<Flags>({g: true, m: true, i: true})
+  const [flags, setFlags] = useState<RegexFlags>({g: true, m: true, i: true})
   const [testCases, setTestCases] = useState<string>('')
 
-  const results: { markers: IMarker[], matches: string[], isValid: boolean } = useMemo(() => {
-
-    if (regexQuery === "") {
-      return {markers: [], matches: [], isValid: true}
-    }
-
-    let regex = null
-    try {
-      const activeFlags = Object.keys(flags).filter((flag) => flags[flag as keyof Flags]).join('')
-      regex = new RegExp(regexQuery, activeFlags)
-      "".match(regex)
-    } catch (err) {
-      return {markers: [], matches: [], isValid: false}
-    }
-    const matches = [...testCases.matchAll(regex)]
-    const markers = matches.map(match => {
-      const startLocation = getCharPositionInText(testCases, match.index as number)
-      const endLocation = getCharPositionInText(testCases, match.index as number + match[0].length)
-      if (!startLocation || !endLocation) {
-        return undefined
-      }
-      return {
-        startRow: startLocation.row,
-        endRow: endLocation.row,
-        startCol: startLocation.col,
-        endCol: endLocation.col,
-        type: 'text',
-        className: 'marker',
-      }
-    }).filter(i => i) as IMarker[]
-
-    return {markers: markers, matches: matches.map(match => match[0]), isValid: true}
-
+  const results: RegexTestResult = useMemo(() => {
+    const regexTesterService = new RegexTesterService(testCases, regexQuery, flags)
+    return regexTesterService.getResults()
   }, [regexQuery, testCases, flags]);
 
   const matchesList = results.matches.join('\n')
+  const flagsText = Object.keys(flags).filter((flag) => flags[flag as keyof RegexFlags]).join('')
 
   const RenderInputSettings = () => {
     return (
@@ -122,7 +89,7 @@ const RegexTester = () => {
                 <span className={styles.biggerText}>/</span>
                 {' '}
                 <span
-                  className={styles.flagsText}>{Object.keys(flags).filter((flag) => flags[flag as keyof Flags]).join('')}</span>
+                  className={styles.flagsText}>{flagsText}</span>
               </div>
             </div>
             <AceEditor
