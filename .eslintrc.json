@@ -22,6 +22,7 @@
     "@typescript-eslint",
     "simple-import-sort"
   ],
+  "ignorePatterns": ["node_modules", "dist", "dist-electron", "release", ".idea", ".github"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "simple-import-sort/imports": ["error", {
@@ -34,5 +35,10 @@
         ["^[./]"]
       ]
     }]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }

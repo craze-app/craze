@@ -1,4 +1,4 @@
-import {IMarker} from "react-ace/src/types";
+import { IMarker } from 'react-ace/src/types'
 
 export type RegexFlags = {
   g: boolean
@@ -6,4 +6,4 @@ export type RegexFlags = {
   i: boolean
 }
 
-export type RegexTestResult = { markers: IMarker[], matches: string[], isValid: boolean }
+export type RegexTestResult = { markers: IMarker[]; matches: string[]; isValid: boolean }
