@@ -7,18 +7,15 @@ import {
 } from 'react-reflex'
 import {useMemo, useState} from "react";
 import AceEditor from "react-ace";
+import OutputBar from "../../components/organisms/output-bar/OutputBar";
+import {UrlEncodeDecodeService} from "./UrlEncodeDecode.service";
+import {UrlEncodeDecodeActions} from "./UrlEncodeDecode.types";
+import {urlEncodeDecodeSample} from "./UrlEncodeDecode.sample";
 
 import "ace-builds/src-noconflict/mode-text";
 import "ace-builds/src-noconflict/theme-one_dark";
 import "ace-builds/src-noconflict/ext-language_tools";
-import OutputBar from "../../components/organisms/output-bar/OutputBar";
-import {UrlEncodeDecodeService} from "./UrlEncodeDecode.service";
-import {UrlEncodeDecodeActions} from "./UrlEncodeDecode.types";
 
-const SAMPLE_DATA = {
-  [UrlEncodeDecodeActions.ENCODE]: "https://fonts.google.com/?query=quicksand&category=Sans+Serif&preview.text=Input:&preview.text_type=custom",
-  [UrlEncodeDecodeActions.DECODE]: "https%3A%2F%2Ffonts.google.com%2F%3Fquery%3Dquicksand%26category%3DSans%2BSerif%26preview.text%3DInput%3A%26preview.text_type%3Dcustom"
-}
 const UrlEncodeDecode = () => {
 
   const [inputText, setInputText] = useState<string>("")
@@ -59,7 +56,7 @@ const UrlEncodeDecode = () => {
         <ReflexContainer orientation="horizontal">
           <ReflexElement className="pane" minSize={100}>
             <InputBar onClickPaste={(text) => setInputText(text)} onClickClear={() => setInputText("")}
-                      onClickSample={() => setInputText(SAMPLE_DATA[actionType])} rightComponent={<RenderInputTypes/>}/>
+                      onClickSample={() => setInputText(urlEncodeDecodeSample[actionType])} rightComponent={<RenderInputTypes/>}/>
             <AceEditor
               fontSize={13}
               style={{flex: 1, width: "100%"}}
