@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
     "build": "tsc && vite build && electron-builder",
     "build:vite": "tsc && vite build",
     "build:macos": "tsc && vite build && electron-builder -m",
