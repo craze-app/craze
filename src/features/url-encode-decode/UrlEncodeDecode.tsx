@@ -11,6 +11,7 @@ import OutputBar from "../../components/organisms/output-bar/OutputBar";
 import {UrlEncodeDecodeService} from "./UrlEncodeDecode.service";
 import {UrlEncodeDecodeActions} from "./UrlEncodeDecode.types";
 import {urlEncodeDecodeSample} from "./UrlEncodeDecode.sample";
+import {useUrlEncodeDecodeStore} from "./UrlEncodeDecode.store";
 
 import "ace-builds/src-noconflict/mode-text";
 import "ace-builds/src-noconflict/theme-one_dark";
@@ -18,8 +19,7 @@ import "ace-builds/src-noconflict/ext-language_tools";
 
 const UrlEncodeDecode = () => {
 
-  const [inputText, setInputText] = useState<string>("")
-  const [actionType, setActionType] = useState<UrlEncodeDecodeActions>(UrlEncodeDecodeActions.ENCODE)
+  const {inputText, actionType, setInputText, setActionType} = useUrlEncodeDecodeStore()
 
   const outputText = useMemo(() => {
     try {

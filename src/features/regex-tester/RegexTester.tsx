@@ -14,11 +14,10 @@ import 'ace-builds/src-min-noconflict/ext-searchbox';
 import {RegexTesterService} from "./RegexTester.service";
 import {RegexFlags, RegexTestResult} from "./RegexTester.types";
 import {regexTesterSample} from "./RegexTester.sample";
+import {useRegexTesterStore} from "./RegexTester.store";
 
 const RegexTester = () => {
-  const [regexQuery, setRegexQuery] = useState<string>('')
-  const [flags, setFlags] = useState<RegexFlags>({g: true, m: true, i: true})
-  const [testCases, setTestCases] = useState<string>('')
+  const {regexQuery, flags, testCases, setRegexQuery, setFlags, setTestCases} = useRegexTesterStore()
 
   const results: RegexTestResult = useMemo(() => {
     const regexTesterService = new RegexTesterService(testCases, regexQuery, flags)
@@ -34,7 +33,7 @@ const RegexTester = () => {
         <label htmlFor="flag-i">
           <input id={"flag-i"} type={"checkbox"} value={"i"}
                  checked={flags.i}
-                 onChange={(e) => setFlags(flags => ({...flags, i: !flags["i"]}))}/>
+                 onChange={(e) => setFlags({...flags, i: !flags["i"]})}/>
           <span>insensetive</span>
         </label>
       </div>
