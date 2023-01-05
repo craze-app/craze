@@ -26,7 +26,6 @@
   "devDependencies": {
     "@emotion/react": "^11.10.5",
     "@jest/globals": "^29.3.1",
-    "@mantine/prism": "^5.9.5",
     "@tabler/icons": "^1.118.0",
     "@types/jest": "^29.2.5",
     "@types/react": "^18.0.26",
