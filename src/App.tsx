@@ -1,11 +1,11 @@
-import Router from "./Router";
-import React from "react";
-import "./assets/styles/main.scss"
+import React from 'react'
+
+import Router from './Router'
+
+import './assets/styles/main.scss'
 
 function App() {
-  return (
-      <Router />
-  )
+  return <Router />
 }
 
 export default App

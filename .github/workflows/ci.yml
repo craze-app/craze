@@ -7,5 +7,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Install modules
         run: yarn
+      - name: Lint Errors
+        run: yarn lint
+      - name: Tests
+        run: yarn test
       - name: Build vite
         run: yarn build:vite
