@@ -35,8 +35,8 @@ describe('RegexTesterService', () => {
           startCol: 0,
           endCol: 1,
           type: 'text',
-          className: 'marker'
-        }
+          className: 'marker',
+        },
       ])
     })
 
@@ -63,7 +63,7 @@ describe('RegexTesterService', () => {
           startCol: 0,
           endCol: 1,
           type: 'text',
-          className: 'marker'
+          className: 'marker',
         },
         {
           startRow: 0,
@@ -71,7 +71,7 @@ describe('RegexTesterService', () => {
           startCol: 1,
           endCol: 2,
           type: 'text',
-          className: 'marker'
+          className: 'marker',
         },
         {
           startRow: 0,
@@ -79,8 +79,8 @@ describe('RegexTesterService', () => {
           startCol: 2,
           endCol: 3,
           type: 'text',
-          className: 'marker'
-        }
+          className: 'marker',
+        },
       ])
     })
 
@@ -98,7 +98,7 @@ describe('RegexTesterService', () => {
           startCol: 0,
           endCol: 1,
           type: 'text',
-          className: 'marker'
+          className: 'marker',
         },
         {
           startRow: 0,
@@ -106,7 +106,7 @@ describe('RegexTesterService', () => {
           startCol: 1,
           endCol: 2,
           type: 'text',
-          className: 'marker'
+          className: 'marker',
         },
         {
           startRow: 0,
@@ -114,8 +114,8 @@ describe('RegexTesterService', () => {
           startCol: 2,
           endCol: 3,
           type: 'text',
-          className: 'marker'
-        }
+          className: 'marker',
+        },
       ])
     })
   })

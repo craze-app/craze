@@ -18,13 +18,13 @@ export const features: Feature[] = [
     id: 'json-formatter',
     component: JsonFormatter,
     title: 'JSON Formatter',
-    sidebarIcon: IconBraces
+    sidebarIcon: IconBraces,
   },
   {
     id: 'url-encode-decode',
     component: UrlEncodeDecode,
     title: 'URL Encode/Decode',
-    sidebarIcon: IconUnlink
+    sidebarIcon: IconUnlink,
   },
-  { id: 'regex-tester', component: RegexTester, title: 'Regex Tester', sidebarIcon: IconRegex }
+  { id: 'regex-tester', component: RegexTester, title: 'Regex Tester', sidebarIcon: IconRegex },
 ]

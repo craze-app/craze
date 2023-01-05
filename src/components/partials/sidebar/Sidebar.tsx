@@ -8,7 +8,7 @@ import { Feature, features } from '../../../features'
 import styles from './Sidebar.module.scss'
 
 const fuseOptions = {
-  keys: ['title', 'id']
+  keys: ['title', 'id'],
 }
 
 type SidebarProps = {

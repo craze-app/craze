@@ -41,7 +41,7 @@ export class RegexTesterService {
         const startLocation = getCharPositionInText(this.testCases, match.index as number)
         const endLocation = getCharPositionInText(
           this.testCases,
-          (match.index as number) + match[0].length
+          (match.index as number) + match[0].length,
         )
         if (!startLocation || !endLocation) {
           return undefined
@@ -52,7 +52,7 @@ export class RegexTesterService {
           startCol: startLocation.col,
           endCol: endLocation.col,
           type: 'text',
-          className: 'marker'
+          className: 'marker',
         }
       })
       .filter((i) => i) as IMarker[]

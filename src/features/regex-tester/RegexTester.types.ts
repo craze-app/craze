@@ -6,4 +6,8 @@ export type RegexFlags = {
   i: boolean
 }
 
-export type RegexTestResult = { markers: IMarker[]; matches: string[]; isValid: boolean }
+export type RegexTestResult = {
+  markers: IMarker[]
+  matches: string[]
+  isValid: boolean
+}

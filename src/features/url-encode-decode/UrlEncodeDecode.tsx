@@ -16,7 +16,7 @@ import 'ace-builds/src-noconflict/theme-one_dark'
 const UrlEncodeDecode = () => {
   const [inputText, setInputText] = useState<string>('')
   const [actionType, setActionType] = useState<UrlEncodeDecodeActions>(
-    UrlEncodeDecodeActions.ENCODE
+    UrlEncodeDecodeActions.ENCODE,
   )
 
   const outputText = useMemo(() => {

@@ -1,6 +1,6 @@
 export const getCharPositionInText = (
   text: string,
-  charIndex: number
+  charIndex: number,
 ): { row: number; col: number } | undefined => {
   if (charIndex < 0 || charIndex >= text.length) {
     return undefined

@@ -18,15 +18,15 @@ const isDevelopment = process.env.NODE_ENV === 'development' || !!process.env.VS
 export default defineConfig({
   resolve: {
     alias: {
-      '@': path.join(__dirname, 'src')
-    }
+      '@': path.join(__dirname, 'src'),
+    },
   },
   plugins: [
     react(),
     electron({
       include: ['electron'],
       transformOptions: {
-        sourcemap: isDevelopment
+        sourcemap: isDevelopment,
       },
       plugins: [
         ...(process.env.VSCODE_DEBUG
@@ -34,30 +34,30 @@ export default defineConfig({
               // Will start Electron via VSCode Debug
               customStart(() =>
                 debounce(() =>
-                  console.log(/* For `.vscode/.debug.script.mjs` */ '[startup] Electron App')
-                )
-              )
+                  console.log(/* For `.vscode/.debug.script.mjs` */ '[startup] Electron App'),
+                ),
+              ),
             ]
           : []),
         // Allow use `import.meta.env.VITE_SOME_KEY` in Electron-Main
-        loadViteEnv()
-      ]
+        loadViteEnv(),
+      ],
     }),
     // Use Node.js API in the Renderer-process
     renderer({
-      nodeIntegration: true
-    })
+      nodeIntegration: true,
+    }),
   ],
   server: process.env.VSCODE_DEBUG
     ? (() => {
         const url = new URL(pkg.debug.env.VITE_DEV_SERVER_URL)
         return {
           host: url.hostname,
-          port: +url.port
+          port: +url.port,
         }
       })()
     : undefined,
-  clearScreen: false
+  clearScreen: false,
 })
 
 function debounce<Fn extends (...args: never[]) => void>(fn: Fn, delay = 299): Fn {
