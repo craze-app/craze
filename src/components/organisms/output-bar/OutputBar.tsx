@@ -1,5 +1,6 @@
-import styles from "./OutputBar.module.scss"
-import {ReactNode} from "react";
+import { ReactNode } from 'react'
+
+import styles from './OutputBar.module.scss'
 
 type OutputBarProps = {
   label?: string
@@ -8,18 +9,15 @@ type OutputBarProps = {
 }
 
 const OutputBar = (props: OutputBarProps) => {
-
   const onClickCopyHandler = async () => {
-     await navigator.clipboard.writeText(props.copyValue)
+    await navigator.clipboard.writeText(props.copyValue)
   }
 
   return (
     <div className={styles.outputBar}>
-      <div className={styles.title}>{props.label || "Output"}: </div>
+      <div className={styles.title}>{props.label || 'Output'}: </div>
       <div className={styles.buttons}>
-        <button onClick={onClickCopyHandler}>
-          Copy Clipboard
-        </button>
+        <button onClick={onClickCopyHandler}>Copy Clipboard</button>
       </div>
       {props.rightComponent && <div className={styles.right}>{props.rightComponent}</div>}
     </div>
