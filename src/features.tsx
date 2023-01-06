@@ -1,8 +1,16 @@
 import { FC } from 'react'
 
-import { IconBraces, IconRegex, IconTransform, IconUnlink, TablerIcon } from '@tabler/icons'
+import {
+  IconBraces,
+  IconCode,
+  IconRegex,
+  IconTransform,
+  IconUnlink,
+  TablerIcon,
+} from '@tabler/icons'
 
 import Base64String from './features/base64-string/Base64String'
+import HtmlPreview from './features/html-preview/HtmlPreview'
 import JsonFormatter from './features/json-formatter/JsonFormatter'
 import RegexTester from './features/regex-tester/RegexTester'
 import UrlEncodeDecode from './features/url-encode-decode/UrlEncodeDecode'
@@ -28,6 +36,5 @@ export const features: Feature[] = [
     sidebarIcon: IconUnlink,
   },
   { id: 'regex-tester', component: RegexTester, title: 'Regex Tester', sidebarIcon: IconRegex },
-  {id: "base64-string", component: Base64String, title: "Base64 String Encode/Decode", sidebarIcon: IconTransform},
-  {id: "html-preview", component: HtmlPreview, title: "HTML Preview", sidebarIcon: IconCode},
+  { id: 'html-preview', component: HtmlPreview, title: 'HTML Preview', sidebarIcon: IconCode },
 ]
