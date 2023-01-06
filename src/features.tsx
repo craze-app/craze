@@ -1,16 +1,11 @@
 import { FC } from 'react'
 
-import { IconBraces, IconRegex, IconUnlink, TablerIcon } from '@tabler/icons'
+import { IconBraces, IconRegex, IconTransform, IconUnlink, TablerIcon } from '@tabler/icons'
 
+import Base64String from './features/base64-string/Base64String'
 import JsonFormatter from './features/json-formatter/JsonFormatter'
 import RegexTester from './features/regex-tester/RegexTester'
 import UrlEncodeDecode from './features/url-encode-decode/UrlEncodeDecode'
-import JsonFormatter from "./features/json-formatter/JsonFormatter";
-import {IconBraces, IconCode, IconTransform, IconUnlink, TablerIcon} from "@tabler/icons";
-import UrlEncodeDecode from "./features/url-encode-decode/UrlEncodeDecode";
-import {FC} from "react";
-import Base64String from "./features/base64-string/Base64String";
-import HtmlPreview from "./features/html-preview/HtmlPreview";
 
 export type Feature = {
   id: string
