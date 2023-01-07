@@ -11,7 +11,7 @@ Craze, [Electron](https://www.electronjs.org/) kullanılarak geliştirilmiş cro
 Uygulamayı geliştirirken standart bir stile sahip olmak için [ESLint](https://eslint.org/) ve [Prettier](https://prettier.io/) tercih edilmiştir. Prettier, ESLint'e bağlı bir şekilde çalıştığı için kullandığınız editör veya IDE'de ESLint eklentisini aktifleştirmeniz yeterli olacaktır.
 
 
-## Komut Satırı ile Feature Oluşturmak
+## Komut Satırı
 Craze içerisine yeni bir özellik eklemek isteyenlerin işlerini hızlandırmak için bir komut dosyası oluşturduk. Komut satırından aşağıdaki kodu çalıştırdığınızda komut sizin için `src/features` dizininde belirttiğiniz isimde bir feature dosya yapısı kuracaktır. Ayrıca yeni bir feature oluşturmak için bu komutu kullanmak zorunda değilsiniz, bu sadece yardımcı bir komuttur. Unutmayın ki oluşturulan feature dosyalarında herhangi bir logic olmayacaktır ve içinizi sizin doldurmanız gerekmektedir.
 
 ```sh
