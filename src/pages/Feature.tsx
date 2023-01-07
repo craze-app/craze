@@ -19,7 +19,7 @@ const FeaturePage = () => {
     <>
       <FeatureHeader feature={feature} />
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 12 }}>
-        <feature.component key={feature.id} />
+        <feature.component key={feature.id} id={feature.id} />
       </div>
     </>
   )
