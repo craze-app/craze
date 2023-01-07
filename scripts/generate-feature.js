@@ -16,12 +16,21 @@ const pascalCaseFeatureName = `${camelCaseFeatureName[0].toUpperCase()}${camelCa
 )}`
 const kebabCaseFeatureName = _.kebabCase(featureName)
 
-console.log(camelCaseFeatureName, pascalCaseFeatureName, kebabCaseFeatureName)
-
 const templateDir = path.resolve(__dirname, '..', 'template', 'generate-feature')
+const tempDir = path.resolve(__dirname, 'temp')
+const targetDir = path.resolve(__dirname, '..', 'src', 'features', kebabCaseFeatureName)
+
+if (fs.existsSync(tempDir)) {
+  fs.rmdirSync(tempDir, { recursive: true })
+}
+
+if (fs.existsSync(targetDir)) {
+  console.error('Feature folder is already exists!')
+  process.exit(2)
+}
+
 const files = fs.readdirSync(templateDir)
 
-const tempDir = path.resolve(__dirname, 'temp')
 fs.mkdirSync(tempDir)
 for (const file of files) {
   let fileContent = fs.readFileSync(path.resolve(templateDir, file), 'utf8')
@@ -35,7 +44,6 @@ for (const file of files) {
   fs.renameSync(path.resolve(tempDir, file), path.resolve(tempDir, file))
 }
 
-const targetDir = path.resolve(__dirname, '..', 'src', 'features', kebabCaseFeatureName)
 fs.mkdirSync(targetDir)
 
 for (const file of files) {
