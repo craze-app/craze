@@ -10,6 +10,17 @@ Craze, [Electron](https://www.electronjs.org/) kullanılarak geliştirilmiş cro
 ## Linter/Formatter
 Uygulamayı geliştirirken standart bir stile sahip olmak için [ESLint](https://eslint.org/) ve [Prettier](https://prettier.io/) tercih edilmiştir. Prettier, ESLint'e bağlı bir şekilde çalıştığı için kullandığınız editör veya IDE'de ESLint eklentisini aktifleştirmeniz yeterli olacaktır.
 
+
+## Komut Satırı ile Feature Oluşturmak
+Craze içerisine yeni bir özellik eklemek isteyenlerin işlerini hızlandırmak için bir komut dosyası oluşturduk. Komut satırından aşağıdaki kodu çalıştırdığınızda komut sizin için `src/features` dizininde belirttiğiniz isimde bir feature dosya yapısı kuracaktır. Ayrıca yeni bir feature oluşturmak için bu komutu kullanmak zorunda değilsiniz, bu sadece yardımcı bir komuttur. Unutmayın ki oluşturulan feature dosyalarında herhangi bir logic olmayacaktır ve içinizi sizin doldurmanız gerekmektedir.
+
+```sh
+yarn generate-feature markdown-editor
+```
+
+Komutu çalıştırdıktan sonra başarıyla oluşturuldu mesajını görürseniz, `src/features.tsx` dosyasındaki `features` dizisine oluşturduğunuz özelliği ekleyin. Özelliğiniz bu şekilde sol menüde listenecektir ve erişilebilir olacaktır. Sol menüde her özelliğin bir ikonu mevcuttur ve özelliğinize [Tabler Icons](https://tabler-icons.io/)'dan bir ikon seçebilirsiniz.
+
+
 ## 3. Parti Paketler
 Farklı lock dosyaları oluşmaması için paket yöneticisi olarak [Yarn](https://yarnpkg.com/) kullanıyoruz. Eğer codebase'e yeni bir npm paketi dahil etmek istiyorsanız dikkat etmeniz gereken 3 madde mevcut:
 
@@ -19,11 +30,13 @@ Bu 3 maddenin öncesinde eğer 3. parti bir paket dahil etmeden de basit bir şe
 2. Dahil etmek istediğiniz 3. parti paketin çalışması için internet erişimi gerektirmediğinden emin olun. Craze offline durumda da çalışabilen bir uygulama olmalıdır.
 3. Dahil etmek istediğiniz 3. parti paket için `dependency` ve `devDependency` ayrımını doğru bir şekilde yapın. Craze bir Electron uygulaması olduğu için bu ayrım, eğer daha önce bir Electron uygulaması geliştirmediyseniz size tuhaf gelebilir. Fakat proje, çalıştırılabilir bir uygulamaya dönüştürülürken yapılan build işleminde aslında `devDependency` listesi de uygulama içine dahil edilecektir. Ayrım temelde şu şekilde yapılabilir:
 
+
 | Sınıflandırma | Örnek 3. parti uygulamalar | dependencies | devDependencies |
 |--|--|--|--|
 | NodeJS Native Modülleri (C/C++) | serialport, sqlite3 | ✅ | ❌ |
 | NodeJS CJM ve ESM Modülleri | bcrypt, execa | ❌ | ✅ |
 | Web Modülleri | formik, lodash | ❌ | ✅ |
+
 
 ## Mevcut 3. Parti Yardımcılar
 
@@ -38,8 +51,10 @@ Proje içerisinde mevcut olan bazı 3. parti paketlere aşağıdaki listeden kul
 | [Fuse.js](https://fusejs.io/) | Search gerektiren özellikler için Fuse.js kapsamlı bir arama imkanı sağlamaktadır. |
 | [Classnames](https://www.npmjs.com/package/classnames) | React bileşeninizde dahil etmek istediğiniz birden fazla stili birleştirmenizi sağlar. Ayrıca şartlı bir şekilde stil de ekleyebilirsiniz. |
 
+
 ## CSS ve UI Kit
 Craze içerisinde herhangi bir UI Kit barındırmamaktadır. Stil kısmında ise scoped bir css yazmak için Module.css kullanmaktadır. Bunun yanında kod okunurluğu ve yazım konforunu arttırmak için SCSS ile birlikte kullanılmaktadır. Eğer bir özellik geliştiriyorsanız bu özelliğe ait bir module.scss dosyası olacaktır. Tüm uygulamaya etki etmesi istenen stiller ise `src/assets/styles` içerisinde bulunmaktadır.
+
 
 ## Testing
 Proje içerisinde şuanda unit testler mevcuttur ve her geliştirilen feature için minimum bir unit test oluşturulması gerekmektedir. Testler için [Jest](https://jestjs.io/) kütüphanesi kullanılmaktadır. Unit testleri oluşturmak için ChatGPT'den de yardım alabilirsiniz, size başlangıç için birkaç senaryo hazırlayacaktır.
