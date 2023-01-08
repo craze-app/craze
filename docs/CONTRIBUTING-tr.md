@@ -9,6 +9,8 @@ Katkıda bulunmak istediğiniz özellik veya hatayı düzeltmek için öncelikle
 - Yeni özellik eklemek için: `feature/feature-name` şeklinde bir branch oluşturun.
 
 ## Kodlama
+> Eğer kodda bir düzenleme yapacaksanız, öncelikle [Kodlama Stili Dökümanı](/docs/CODESTYLE-tr.md)'nı inceleyin.
+
 Özellikler için standart olarak belirtilen dosya yapısını kullanın. Özellik dosya yapısı için öncellikle `/src/featyes/FeatureName` dizinini oluşturun. Aşağıdaki dosyalar bu dizin içerisinde yer almalıdır:
 
 - `FeatureName.tsx`: Feature'ın oluşturulduğu ana dosyadır. Bu React bileşeni içerisinde herhangi bir logic kodu yazılmamalıdır. Ayrıca içerisinde zorunlu olan InputBar ve OutputBar bileşenlerini içermelidir.
