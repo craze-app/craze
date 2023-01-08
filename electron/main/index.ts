@@ -1,7 +1,9 @@
 import { app, BrowserWindow, ipcMain, shell } from 'electron'
 
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import IpcMainEvent = Electron.IpcMainEvent
 
 // The built directory structure
 //
@@ -92,6 +94,31 @@ async function createWindow() {
       win.unmaximize()
     } else {
       win.maximize()
+    }
+  })
+
+  type WriteToTextFile = {
+    featureId: string
+    text: string
+  }
+
+  ipcMain.handle('write-text-to-file', (event: IpcMainEvent, ...args: WriteToTextFile[]) => {
+    const arg = args[0]
+
+    if (arg.featureId !== undefined && arg.featureId === 'html-preview') {
+      try {
+        if (!existsSync('./public/craze-app')) {
+          mkdirSync('./public/craze-app')
+        }
+
+        writeFileSync(`./public/craze-app/${arg.featureId}.html`, arg.text)
+
+        return true
+      } catch (e: any) {
+        console.log(e)
+
+        return false
+      }
     }
   })
 }
