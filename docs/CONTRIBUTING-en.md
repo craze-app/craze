@@ -13,6 +13,7 @@ First, create an issue to report a feature or bug you want to fix. Assign the is
 -   To add a new feature: create a branch named `feature/feature-name`.
 
 ## Coding
+> If you are going to make an edit to the code, please first consult the [Code Style Guide](/docs/CODESTYLE-en.md).
 
 Use the standard file structure for features. To create a directory for a feature, create a `/src/features/FeatureName` directory. The following files should be inside this directory:
 
