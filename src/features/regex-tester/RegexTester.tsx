@@ -6,6 +6,8 @@ import { IconAlertCircle } from '@tabler/icons'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
+import { Feature, FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './RegexTester.module.scss'
 import { regexTesterSample } from './RegexTester.sample'
 import { RegexTesterService } from './RegexTester.service'
@@ -17,7 +19,7 @@ import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-noconflict/mode-java'
 import 'ace-builds/src-min-noconflict/ext-searchbox'
 
-const RegexTester = () => {
+const RegexTester = ({ id }: FeatureRouteComponent) => {
   const [regexQuery, setRegexQuery] = useState<string>('')
   const [flags, setFlags] = useState<RegexFlags>({ g: true, m: true, i: true })
   const [testCases, setTestCases] = useState<string>('')
@@ -53,7 +55,12 @@ const RegexTester = () => {
     <div className={styles.page}>
       <div className={styles.splitContainer}>
         <ReflexContainer orientation="vertical">
-          <ReflexElement className="pane" flex={3}>
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 0, 60)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
             <InputBar
               onClickPaste={(text) => setRegexQuery(text)}
               onClickSample={() => {
@@ -101,7 +108,12 @@ const RegexTester = () => {
             />
           </ReflexElement>
           <ReflexSplitter />
-          <ReflexElement className="pane" flex={2}>
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 1, 40)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
             <OutputBar copyValue={matchesList} />
             <AceEditor
               readOnly={true}

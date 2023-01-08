@@ -4,6 +4,8 @@ import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
+import { FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './UrlEncodeDecode.module.scss'
 import { urlEncodeDecodeSample } from './UrlEncodeDecode.sample'
 import { UrlEncodeDecodeService } from './UrlEncodeDecode.service'
@@ -13,7 +15,7 @@ import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-noconflict/mode-text'
 import 'ace-builds/src-noconflict/theme-one_dark'
 
-const UrlEncodeDecode = () => {
+const UrlEncodeDecode = ({ id }: FeatureRouteComponent) => {
   const [inputText, setInputText] = useState<string>('')
   const [actionType, setActionType] = useState<UrlEncodeDecodeActions>(
     UrlEncodeDecodeActions.ENCODE,
@@ -62,7 +64,13 @@ const UrlEncodeDecode = () => {
     <div className={styles.page}>
       <div className={styles.splitContainer}>
         <ReflexContainer orientation="horizontal">
-          <ReflexElement className="pane" minSize={100}>
+          <ReflexElement
+            className="pane"
+            minSize={100}
+            flex={loadElementSize(id, 0, 50)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
             <InputBar
               onClickPaste={(text) => setInputText(text)}
               onClickClear={() => setInputText('')}
@@ -85,7 +93,13 @@ const UrlEncodeDecode = () => {
             />
           </ReflexElement>
           <ReflexSplitter />
-          <ReflexElement className="pane" minSize={100}>
+          <ReflexElement
+            className="pane"
+            minSize={100}
+            flex={loadElementSize(id, 1, 60)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
             <OutputBar copyValue={outputText} />
             <AceEditor
               readOnly={true}

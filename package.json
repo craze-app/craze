@@ -1,6 +1,6 @@
 {
   "name": "craze",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "dist-electron/main/index.js",
   "description": "Electron Vite React boilerplate.",
   "license": "MIT",
@@ -21,14 +21,15 @@
     "build:macos": "tsc && vite build && electron-builder -m",
     "build:win": "tsc && vite build && electron-builder -w",
     "build:linux": "tsc && vite build && electron-builder -l",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "generate-feature": "node scripts/generate-feature.js"
   },
   "devDependencies": {
     "@emotion/react": "^11.10.5",
     "@jest/globals": "^29.3.1",
-    "@mantine/prism": "^5.9.5",
     "@tabler/icons": "^1.118.0",
     "@types/jest": "^29.2.5",
+    "@types/lodash": "^4.14.191",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.10",
     "@types/react-router-dom": "^5.3.3",

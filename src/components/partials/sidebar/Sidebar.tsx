@@ -1,3 +1,5 @@
+import { ipcRenderer } from 'electron'
+
 import React, { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 
@@ -26,9 +28,16 @@ const Sidebar = (props: SidebarProps) => {
     return fuse.search(searchQuery).map((item) => item.item)
   }, [searchQuery])
 
+  const onDoubleClickHeader = () => {
+    ipcRenderer.send('toggle-maximize')
+  }
+
   return (
     <div className={styles.sidebar} style={{ background: props.backgroundColor }}>
-      <div className={cn(styles.sidebarHeader, 'draggable-area')} />
+      <div
+        className={cn(styles.sidebarHeader, 'draggable-area')}
+        onDoubleClick={onDoubleClickHeader}
+      />
       <div className={styles.sidebarSearch}>
         <input
           value={searchQuery}

@@ -15,9 +15,11 @@ import JsonFormatter from './features/json-formatter/JsonFormatter'
 import RegexTester from './features/regex-tester/RegexTester'
 import UrlEncodeDecode from './features/url-encode-decode/UrlEncodeDecode'
 
+export type FeatureRouteComponent = { id: string }
+
 export type Feature = {
   id: string
-  component: FC
+  component: FC<FeatureRouteComponent>
   title: string
   sidebarIcon: TablerIcon
 }
