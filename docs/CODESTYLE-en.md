@@ -1,7 +1,7 @@
 
 # Coding Style Guide
 
-There are a few points to consider when developing the Craze app. If you want to contribute to this open source project, you must follow these rules to ensure the sustainability of the application. If you want to contribute and haven't read it yet, first take a look at the [Contribution Guide](/CONTRIBUTING-en.md).
+There are a few points to consider when developing the Craze app. If you want to contribute to this open source project, you must follow these rules to ensure the sustainability of the application. If you want to contribute and haven't read it yet, first take a look at the [Contribution Guide](/docs/CONTRIBUTING-en.md).
 
 ## Codebase
 
