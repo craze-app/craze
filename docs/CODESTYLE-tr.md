@@ -1,6 +1,6 @@
 # Kodlama Stili Dökümanı
 
-Craze uygulamasını geliştirirken dikkat ettiğimiz bazı noktalar var. Eğer açık kaynak bu projeye katkı yapmak istiyorsanız bu belirlenen kurallara uymalısınız. Bu sayede uygulama sürdürülebilir kalacaktır. Eğer katkı yapmak istiyorsanız ve okumadıysanız öncelikle [Katkı Rehberine](/CONTRIBUTING-tr.md) göz atabilirsiniz.
+Craze uygulamasını geliştirirken dikkat ettiğimiz bazı noktalar var. Eğer açık kaynak bu projeye katkı yapmak istiyorsanız bu belirlenen kurallara uymalısınız. Bu sayede uygulama sürdürülebilir kalacaktır. Eğer katkı yapmak istiyorsanız ve okumadıysanız öncelikle [Katkı Rehberine](/docs/CONTRIBUTING-tr.md) göz atabilirsiniz.
 
 ## Codebase
 Craze, [Electron](https://www.electronjs.org/) kullanılarak geliştirilmiş cross-platform bir masaüstü uygulamasıdır. Hem server, hem de client tarafında kod güvenirliğini sağlamak için [TypeScript](https://www.typescriptlang.org/) kullanılmaktadır. Client tarafında ise dinamik render/state yönetimi gibi işleri kolaylaştırmak için [React](https://reactjs.org/) tercih edilmiştir.
