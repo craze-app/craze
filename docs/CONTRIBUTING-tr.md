@@ -31,4 +31,4 @@ Geliştirme sürecinde `yarn dev` komutunu kullanarak electron uygulamasını ke
 - `yarn build` komutunu çalıştırarak yazılımın stabil bir şekilde masaüstü uygulaması içerisine aktarılabildiğini doğrulayın.
 
 ## Pull Request
-Değişikliklerinizi tamamladıktan sonra açtığınız branch'e kodlarınızı commitleyin ve pushlayın. GitHub'da bir pull request açın ve neleri değiştirdiğinizi ve nasıl düzelttiğinizi belirtin. Eğer bir feature eklediyseniz ekran görüntüsü eklemeyi de unutmayın.
+Değişikliklerinizi tamamladıktan sonra açtığınız branch'e kodlarınızı commitleyin ve pushlayın. GitHub'da bir pull request açın ve neleri değiştirdiğinizi ve nasıl düzelttiğinizi belirtin. Eğer bir feature eklediyseniz ekran görüntüsü eklemeyi de unutmayın. Ayrıca hedef branck olarak `develop` branchini kullanmalısınız. `main` branchine sadece yeni release paylaşılacağı zaman merge işlemi yapılmaktadır.
