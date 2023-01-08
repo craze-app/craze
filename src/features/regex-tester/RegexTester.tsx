@@ -6,7 +6,7 @@ import { IconAlertCircle } from '@tabler/icons'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
-import { Feature, FeatureRouteComponent } from '../../features'
+import { FeatureRouteComponent } from '../../features'
 import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './RegexTester.module.scss'
 import { regexTesterSample } from './RegexTester.sample'
