@@ -4,6 +4,8 @@ import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
+import { FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './JsonFormatter.module.scss'
 import { SAMPLE_DATA } from './JsonFormatter.sample'
 import { JsonFormatterService } from './JsonFormatter.service'
@@ -12,7 +14,7 @@ import 'ace-builds/src-noconflict/mode-json'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
-const JsonFormatter = () => {
+const JsonFormatter = ({ id }: FeatureRouteComponent) => {
   const [inputText, setInputText] = useState('')
 
   const outputText = useMemo(() => {
@@ -35,7 +37,12 @@ const JsonFormatter = () => {
     <div className={styles.page}>
       <div className={styles.splitContainer}>
         <ReflexContainer orientation="vertical">
-          <ReflexElement className="pane">
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 0, 60)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
             <InputBar
               onClickPaste={(text) => setInputText(text)}
               onClickSample={() => setInputText(SAMPLE_DATA)}
@@ -55,7 +62,12 @@ const JsonFormatter = () => {
             />
           </ReflexElement>
           <ReflexSplitter />
-          <ReflexElement className="pane">
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 1, 40)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
             <OutputBar copyValue={outputText} />
             <AceEditor
               readOnly={true}
