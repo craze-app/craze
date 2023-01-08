@@ -1,3 +1,5 @@
+import { ipcRenderer } from 'electron'
+
 import { useState } from 'react'
 
 import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
@@ -13,8 +15,13 @@ type FeatureHeaderProps = {
 const FeatureHeader = (props: FeatureHeaderProps) => {
   const [isFavoriteFeature, setIsFavoriteFeature] = useState<boolean>(false)
   const [isPinned, setIsPinned] = useState<boolean>(false)
+
+  const onDoubleClick = () => {
+    ipcRenderer.send('toggle-maximize')
+  }
+
   return (
-    <div className={cn(styles.header, 'draggable-area')}>
+    <div className={cn(styles.header, 'draggable-area')} onDoubleClick={onDoubleClick}>
       <div className={cn(styles.buttons, styles.leftButtons)}>
         <button>
           <IconLayoutColumns size={18} />

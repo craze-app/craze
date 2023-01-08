@@ -86,6 +86,14 @@ async function createWindow() {
   app.on('browser-window-blur', () => {
     win.webContents.send('blurred')
   })
+
+  ipcMain.on('toggle-maximize', () => {
+    if (win.isMaximized()) {
+      win.unmaximize()
+    } else {
+      win.maximize()
+    }
+  })
 }
 
 app.whenReady().then(createWindow)
