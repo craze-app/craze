@@ -36,4 +36,4 @@ During development, you can run the electron app on your own computer using the 
 
 ## Pull Request
 
-After you have finished your changes, commit and push your code to the branch you opened. Create a pull request on GitHub and specify what you changed and how you fixed it. Don't forget to include a screenshot if you added a feature.
+After you have finished your changes, commit and push your code to the branch you opened. Create a pull request on GitHub and specify what you changed and how you fixed it. Don't forget to include a screenshot if you added a feature. You should also use the `develop` branch as the target branch. Only when a new release is shared is the merge operation performed on the `main` branch
