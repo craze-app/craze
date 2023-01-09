@@ -1,13 +1,14 @@
 import create from 'zustand'
-import {UrlEncodeDecodeActions, UrlEncodeDecodeState} from "./UrlEncodeDecode.types";
+
+import { UrlEncodeDecodeActions, UrlEncodeDecodeState } from './UrlEncodeDecode.types'
 
 export const useUrlEncodeDecodeStore = create<UrlEncodeDecodeState>((set) => ({
-  inputText: "",
+  inputText: '',
   actionType: UrlEncodeDecodeActions.ENCODE,
   setInputText: (text) => {
-    set({inputText: text})
+    set({ inputText: text })
   },
   setActionType: (actionType) => {
-    set({actionType})
-  }
+    set({ actionType })
+  },
 }))

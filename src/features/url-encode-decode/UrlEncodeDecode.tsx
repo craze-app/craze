@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import AceEditor from 'react-ace'
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
@@ -9,13 +9,15 @@ import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './UrlEncodeDecode.module.scss'
 import { urlEncodeDecodeSample } from './UrlEncodeDecode.sample'
 import { UrlEncodeDecodeService } from './UrlEncodeDecode.service'
+import { useUrlEncodeDecodeStore } from './UrlEncodeDecode.store'
 import { UrlEncodeDecodeActions } from './UrlEncodeDecode.types'
 
 import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-noconflict/mode-text'
 import 'ace-builds/src-noconflict/theme-one_dark'
 
-  const {inputText, actionType, setInputText, setActionType} = useUrlEncodeDecodeStore()
+const UrlEncodeDecode = ({ id }: FeatureRouteComponent) => {
+  const { inputText, actionType, setInputText, setActionType } = useUrlEncodeDecodeStore()
 
   const outputText = useMemo(() => {
     try {
