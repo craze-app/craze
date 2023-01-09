@@ -6,6 +6,6 @@ export type UrlEncodeDecodeState = {
 }
 
 export enum UrlEncodeDecodeActions {
-  ENCODE = "ENCOE",
-  DECODE = "DECODE"
+  ENCODE = 'ENCOE',
+  DECODE = 'DECODE',
 }
