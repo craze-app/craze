@@ -1,11 +1,13 @@
 import { ipcRenderer } from 'electron'
 
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
 import cn from 'classnames'
+import lodash from 'lodash'
 
-import { Feature } from '../../../features'
+import { Feature, features } from '../../../features'
+import { useFavouriteFeaturesStore } from '../../../stores/FavouriteFeaturesStore'
 import styles from './FeatureHeader.module.scss'
 
 type FeatureHeaderProps = {
@@ -13,8 +15,11 @@ type FeatureHeaderProps = {
 }
 
 const FeatureHeader = (props: FeatureHeaderProps) => {
-  const [isFavoriteFeature, setIsFavoriteFeature] = useState<boolean>(false)
   const [isPinned, setIsPinned] = useState<boolean>(false)
+
+  const { isFavouriteFeature, favouriteFeatures, toggleFavouriteFeature } =
+    useFavouriteFeaturesStore()
+  const isFavourite = isFavouriteFeature(props.feature.id)
 
   const onDoubleClick = () => {
     ipcRenderer.send('toggle-maximize')
@@ -30,9 +35,9 @@ const FeatureHeader = (props: FeatureHeaderProps) => {
       <div className={styles.featureName}>
         {props.feature.title}
         <button
-          className={cn(styles.favoriteButton, isFavoriteFeature && styles.favoriteButtonActive)}
-          onClick={() => setIsFavoriteFeature((s) => !s)}
-          title={'Favorite/unfavorite'}>
+          className={cn(styles.favouriteButton, isFavourite && styles.favouriteButtonActive)}
+          onClick={() => toggleFavouriteFeature(props.feature.id)}
+          title={'Favourite/unfavourite'}>
           <IconHeart size={16} />
         </button>
       </div>
