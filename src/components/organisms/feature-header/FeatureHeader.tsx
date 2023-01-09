@@ -1,12 +1,11 @@
 import { ipcRenderer } from 'electron'
 
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
 import cn from 'classnames'
-import lodash from 'lodash'
 
-import { Feature, features } from '../../../features'
+import { Feature } from '../../../features'
 import { useFavouriteFeaturesStore } from '../../../stores/FavouriteFeaturesStore'
 import styles from './FeatureHeader.module.scss'
 
