@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import AceEditor from 'react-ace'
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
@@ -11,18 +11,16 @@ import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './RegexTester.module.scss'
 import { regexTesterSample } from './RegexTester.sample'
 import { RegexTesterService } from './RegexTester.service'
+import { useRegexTesterStore } from './RegexTester.store'
 import { RegexFlags, RegexTestResult } from './RegexTester.types'
 
 import 'ace-builds/src-noconflict/mode-text'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
-import 'ace-builds/src-noconflict/mode-java'
-import 'ace-builds/src-min-noconflict/ext-searchbox'
 
 const RegexTester = ({ id }: FeatureRouteComponent) => {
-  const [regexQuery, setRegexQuery] = useState<string>('')
-  const [flags, setFlags] = useState<RegexFlags>({ g: true, m: true, i: true })
-  const [testCases, setTestCases] = useState<string>('')
+  const { regexQuery, flags, testCases, setRegexQuery, setFlags, setTestCases } =
+    useRegexTesterStore()
 
   const results: RegexTestResult = useMemo(() => {
     const regexTesterService = new RegexTesterService(testCases, regexQuery, flags)
@@ -43,7 +41,7 @@ const RegexTester = ({ id }: FeatureRouteComponent) => {
             type={'checkbox'}
             value={'i'}
             checked={flags.i}
-            onChange={() => setFlags((flags) => ({ ...flags, i: !flags['i'] }))}
+            onChange={() => setFlags({ ...flags, i: !flags['i'] })}
           />
           <span>insensitive</span>
         </label>
