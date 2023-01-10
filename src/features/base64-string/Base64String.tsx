@@ -28,8 +28,10 @@ const Base64String = () => {
       } else {
         return Base64StringService.decode(inputText)
       }
-    } catch (err: any) {
-      return err?.message || 'Invalid Input'
+    } catch (err) {
+      const error = err as Error
+
+      return error?.message || 'Invalid Input'
     }
   }, [inputText, actionType])
 
