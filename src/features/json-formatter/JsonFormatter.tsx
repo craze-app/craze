@@ -4,15 +4,17 @@ import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
+import { FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './JsonFormatter.module.scss'
+import { SAMPLE_DATA } from './JsonFormatter.sample'
+import { JsonFormatterService } from './JsonFormatter.service'
 
 import 'ace-builds/src-noconflict/mode-json'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
-const SAMPLE_DATA = `{"employees":{"employee":[{"id":"1","firstName":"Tom","lastName":"Cruise","photo":"https://jsonformatter.org/img/tom-cruise.jpg"},{"id":"2","firstName":"Maria","lastName":"Sharapova","photo":"https://jsonformatter.org/img/Maria-Sharapova.jpg"},{"id":"3","firstName":"Robert","lastName":"Downey Jr.","photo":"https://jsonformatter.org/img/Robert-Downey-Jr.jpg"}]}}`
-
-const JsonFormatter = () => {
+const JsonFormatter = ({ id }: FeatureRouteComponent) => {
   const [inputText, setInputText] = useState('')
 
   const outputText = useMemo(() => {
@@ -21,11 +23,12 @@ const JsonFormatter = () => {
     }
 
     try {
-      return JSON.stringify(JSON.parse(inputText), null, 2)
+      return JsonFormatterService.format(inputText)
     } catch (err: unknown) {
       if (err instanceof Error) {
         return err.message
       }
+
       return 'Invalid Input'
     }
   }, [inputText])
@@ -34,7 +37,12 @@ const JsonFormatter = () => {
     <div className={styles.page}>
       <div className={styles.splitContainer}>
         <ReflexContainer orientation="vertical">
-          <ReflexElement className="pane">
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 0, 60)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
             <InputBar
               onClickPaste={(text) => setInputText(text)}
               onClickSample={() => setInputText(SAMPLE_DATA)}
@@ -54,7 +62,12 @@ const JsonFormatter = () => {
             />
           </ReflexElement>
           <ReflexSplitter />
-          <ReflexElement className="pane">
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 1, 40)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
             <OutputBar copyValue={outputText} />
             <AceEditor
               readOnly={true}
