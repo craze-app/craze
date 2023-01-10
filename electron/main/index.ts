@@ -107,17 +107,16 @@ async function createWindow() {
 
     if (arg.featureId !== undefined && arg.featureId === 'html-preview') {
       try {
-        if (!existsSync('./public/craze-app')) {
-          mkdirSync('./public/craze-app')
+        if (!existsSync('/tmp/craze-app')) {
+          mkdirSync('/tmp/craze-app')
         }
 
-        writeFileSync(`./public/craze-app/${arg.featureId}.html`, arg.text)
+        writeFileSync(`/tmp/craze-app/${arg.featureId}.html`, arg.text)
 
-        return true
+        // @TODO: React could not access to file
+        return `file:///private/tmp/craze-app/${arg.featureId}.html`
       } catch (e: any) {
-        console.log(e)
-
-        return false
+        return null
       }
     }
   })

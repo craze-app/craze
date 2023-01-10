@@ -8,7 +8,7 @@ export const htmlPreviewSample = `<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <h1>Hello from DevUtils.app!</h1>
+  <h1>Hello from CrazeApp!</h1>
   <p>
     This is a sample HTML page. By default, JavaScript and link navigation is disabled. You can click the
     gear icon to enable it.

@@ -24,9 +24,9 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
 
     ipcRenderer
       .invoke('write-text-to-file', { featureId: id, text: inputText })
-      .then((result: boolean) => {
-        if (result) {
-          setFilePath(`/craze-app/html-preview.html`)
+      .then((result: string | null) => {
+        if (result !== null) {
+          setFilePath(result)
         }
       })
   }, [inputText])
