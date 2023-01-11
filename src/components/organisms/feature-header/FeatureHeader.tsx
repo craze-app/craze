@@ -13,8 +13,6 @@ type FeatureHeaderProps = {
   feature: Feature
 }
 
-const getAlwaysOnTopValue = () => {}
-
 const FeatureHeader = (props: FeatureHeaderProps) => {
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState<boolean>(false)
 
@@ -29,8 +27,7 @@ const FeatureHeader = (props: FeatureHeaderProps) => {
     }
   }, [])
 
-  const { isFavouriteFeature, favouriteFeatures, toggleFavouriteFeature } =
-    useFavouriteFeaturesStore()
+  const { isFavouriteFeature, toggleFavouriteFeature } = useFavouriteFeaturesStore()
   const isFavourite = isFavouriteFeature(props.feature.id)
 
   const onDoubleClick = () => {
