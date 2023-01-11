@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import AceEditor from 'react-ace'
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
@@ -9,13 +9,14 @@ import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './JsonFormatter.module.scss'
 import { SAMPLE_DATA } from './JsonFormatter.sample'
 import { JsonFormatterService } from './JsonFormatter.service'
+import { useJsonFormatterStore } from './JsonFormatter.store'
 
 import 'ace-builds/src-noconflict/mode-json'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
 const JsonFormatter = ({ id }: FeatureRouteComponent) => {
-  const [inputText, setInputText] = useState('')
+  const { inputText, setInputText } = useJsonFormatterStore()
 
   const outputText = useMemo(() => {
     if (inputText === '') {
