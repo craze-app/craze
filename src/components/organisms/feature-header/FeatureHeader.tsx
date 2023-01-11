@@ -1,6 +1,6 @@
 import { ipcRenderer } from 'electron'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
 import cn from 'classnames'
@@ -12,12 +12,29 @@ type FeatureHeaderProps = {
   feature: Feature
 }
 
+const getAlwaysOnTopValue = () => {}
+
 const FeatureHeader = (props: FeatureHeaderProps) => {
   const [isFavoriteFeature, setIsFavoriteFeature] = useState<boolean>(false)
-  const [isPinned, setIsPinned] = useState<boolean>(false)
+  const [isAlwaysOnTop, setIsAlwaysOnTop] = useState<boolean>(false)
+
+  const onUpdateAlwaysOnTop = (event: unknown, status: boolean) => {
+    setIsAlwaysOnTop(status)
+  }
+
+  useEffect(() => {
+    ipcRenderer.on('on-update-always-on-top', onUpdateAlwaysOnTop)
+    return () => {
+      ipcRenderer.off('on-update-always-on-top', onUpdateAlwaysOnTop)
+    }
+  }, [])
 
   const onDoubleClick = () => {
     ipcRenderer.send('toggle-maximize')
+  }
+
+  const toggleAlwaysOnTop = () => {
+    ipcRenderer.send('toggle-always-on-top')
   }
 
   return (
@@ -37,7 +54,7 @@ const FeatureHeader = (props: FeatureHeaderProps) => {
         </button>
       </div>
       <div className={cn(styles.buttons, styles.rightButtons)}>
-        <button className={cn(isPinned && styles.active)} onClick={() => setIsPinned((s) => !s)}>
+        <button className={cn(isAlwaysOnTop && styles.active)} onClick={toggleAlwaysOnTop}>
           <IconPinned size={18} />
         </button>
       </div>
