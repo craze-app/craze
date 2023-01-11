@@ -1,0 +1,12 @@
+addReviewers: true
+
+addAssignees: author
+
+reviewers:
+  - ahmetkorkmaz3
+  - orcuntuna
+
+numberOfReviewers: 2
+
+skipKeywords:
+  - wip
