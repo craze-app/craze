@@ -1,17 +1,32 @@
 import { ReactNode } from 'react'
 
+import { convertBase64ToBlob } from '../../../helpers/string'
 import styles from './OutputBar.module.scss'
 
 type OutputBarProps = {
   label?: string
   copyValue: string
+  copyValueImage?: boolean
   customButtons?: Array<{ key: string; label: string; onClick: () => void }>
   rightComponent?: ReactNode
 }
 
 const OutputBar = (props: OutputBarProps) => {
   const onClickCopyHandler = async () => {
-    await navigator.clipboard.writeText(props.copyValue)
+    if (!props.copyValue) {
+      return
+    }
+
+    if (!props.copyValueImage) {
+      await navigator.clipboard.writeText(props.copyValue)
+      return
+    }
+
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        'image/png': convertBase64ToBlob(props.copyValue),
+      }),
+    ])
   }
 
   return (

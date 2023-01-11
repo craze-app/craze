@@ -10,3 +10,17 @@
   width: 100%;
   flex: 1;
 }
+
+.qrBox {
+  width: 100%;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qrCanvas {
+  width: 300px;
+  height: 300px;
+  background: #fff;
+}
