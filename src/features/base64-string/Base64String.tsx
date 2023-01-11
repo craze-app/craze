@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import AceEditor from 'react-ace'
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
@@ -7,6 +7,7 @@ import OutputBar from '../../components/organisms/output-bar/OutputBar'
 import styles from './Base64String.module.scss'
 import { base64StringSample } from './Base64String.sample'
 import { Base64StringService } from './Base64String.service'
+import { useBase64StringStore } from './Base64String.store'
 import { Base64StringActions } from './Base64String.types'
 
 import 'ace-builds/src-noconflict/mode-text'
@@ -14,8 +15,7 @@ import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
 
 const Base64String = () => {
-  const [inputText, setInputText] = useState<string>('')
-  const [actionType, setActionType] = useState<Base64StringActions>(Base64StringActions.ENCODE)
+  const { inputText, actionType, setInputText, setActionType } = useBase64StringStore()
 
   const outputText = useMemo(() => {
     if (inputText === '') {
@@ -28,8 +28,10 @@ const Base64String = () => {
       } else {
         return Base64StringService.decode(inputText)
       }
-    } catch (err: any) {
-      return err?.message || 'Invalid Input'
+    } catch (err) {
+      const error = err as Error
+
+      return error?.message || 'Invalid Input'
     }
   }, [inputText, actionType])
 

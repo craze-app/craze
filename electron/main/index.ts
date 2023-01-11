@@ -57,6 +57,8 @@ async function createWindow() {
       nodeIntegration: true,
       contextIsolation: false,
     },
+    width: 1000,
+    height: 600,
   })
 
   if (process.env.VITE_DEV_SERVER_URL) {
@@ -93,6 +95,18 @@ async function createWindow() {
     } else {
       win.maximize()
     }
+  })
+
+  ipcMain.on('toggle-always-on-top', () => {
+    if (win.isAlwaysOnTop()) {
+      win.setAlwaysOnTop(false)
+    } else {
+      win.setAlwaysOnTop(true)
+    }
+  })
+
+  win.on('always-on-top-changed', (event, status) => {
+    win.webContents.send('on-update-always-on-top', status)
   })
 }
 
