@@ -12,6 +12,10 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   const { isFocused } = useWindowFocus()
 
   useEffect(() => {
+    if (process.platform !== 'darwin') {
+      setSidebarBackground('#202932')
+      return
+    }
     if (isFocused) {
       setSidebarBackground('transparent')
     } else {
@@ -20,9 +24,9 @@ const MainLayout = ({ children }: MainLayoutProps) => {
   }, [isFocused])
 
   return (
-    <div style={{ width: '100%', height: '100vh', display: 'flex' }}>
+    <div className="main-layout">
       <Sidebar backgroundColor={sidebarBackground} />
-      <div className={'main-layout-content'}>{children}</div>
+      <div className="main-layout-content">{children}</div>
     </div>
   )
 }
