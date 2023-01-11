@@ -12,8 +12,6 @@ type FeatureHeaderProps = {
   feature: Feature
 }
 
-const getAlwaysOnTopValue = () => {}
-
 const FeatureHeader = (props: FeatureHeaderProps) => {
   const [isFavoriteFeature, setIsFavoriteFeature] = useState<boolean>(false)
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState<boolean>(false)
