@@ -55,7 +55,11 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <div className={styles.sidebar} style={{ background: props.backgroundColor }}>
       <div
-        className={cn(styles.sidebarHeader, 'draggable-area')}
+        className={cn(
+          styles.sidebarHeader,
+          process.platform === 'darwin' && styles.sidebarHeaderMacOs,
+          'draggable-area',
+        )}
         onDoubleClick={onDoubleClickHeader}
       />
       <div className={styles.sidebarSearch}>
