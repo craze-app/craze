@@ -7,8 +7,11 @@ import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './{{FeatureName}}.module.scss'
 import { {{featureName}}Sample } from './{{FeatureName}}.sample'
 import { {{FeatureName}}Service } from './{{FeatureName}}.service'
+import { use{{FeatureName}}Store } from './{{FeatureName}}.store'
 
 const {{FeatureName}} = ({ id }: FeatureRouteComponent) => {
+  const { input, setInput } = use{{FeatureName}}Store()
+
   return (
     <div className={styles.page}>
       <div className={styles.splitContainer}>
