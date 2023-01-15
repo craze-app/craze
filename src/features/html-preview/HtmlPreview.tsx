@@ -1,10 +1,11 @@
-import { ipcRenderer } from 'electron'
+import { ipcRenderer, shell } from 'electron'
 
 import { useMemo, useState } from 'react'
 import AceEditor from 'react-ace'
 import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 
 import InputBar from '../../components/organisms/input-bar/InputBar'
+import OutputBar from '../../components/organisms/output-bar/OutputBar'
 import { FeatureRouteComponent } from '../../features'
 import styles from './HtmlPreview.module.scss'
 import { htmlPreviewSample } from './HtmlPreview.sample'
@@ -30,6 +31,18 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
         }
       })
   }, [inputText])
+
+  const openInBrowserAction = () => {
+    shell.openExternal(filePath)
+  }
+
+  const RenderOpenInBrowser = () => {
+    return (
+      <button className={styles.button} onClick={openInBrowserAction}>
+        Open in browser
+      </button>
+    )
+  }
 
   return (
     <div className={styles.page}>
@@ -58,6 +71,7 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
           </ReflexElement>
           <ReflexSplitter />
           <ReflexElement className="pane" minSize={100}>
+            <OutputBar rightComponent={<RenderOpenInBrowser />} />
             <iframe className={styles.htmlPreviewOutput} src={filePath}></iframe>
           </ReflexElement>
         </ReflexContainer>
