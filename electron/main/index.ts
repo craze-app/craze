@@ -122,15 +122,16 @@ async function createWindow() {
 
     if (arg.featureId !== undefined && arg.featureId === 'html-preview') {
       try {
-        if (!existsSync('/tmp/craze-app')) {
-          mkdirSync('/tmp/craze-app')
+        const tempFolder = join(app.getPath('temp'), 'craze-app')
+        if (!existsSync(tempFolder)) {
+          mkdirSync(tempFolder)
         }
 
-        writeFileSync(`/tmp/craze-app/${arg.featureId}.html`, arg.text)
+        const file = join(tempFolder, `${arg.featureId}.html`)
 
-        return process.platform === 'darwin'
-          ? `file:///private/tmp/craze-app/${arg.featureId}.html`
-          : `file:///tmp/craze-app/${arg.featureId}.html`
+        writeFileSync(file, arg.text)
+
+        return process.platform === 'darwin' ? `file:///private/${file}` : file
       } catch (e: any) {
         return null
       }
