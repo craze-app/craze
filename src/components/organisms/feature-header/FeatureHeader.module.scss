@@ -22,7 +22,7 @@ $header-height: 40px;
   display: flex;
   align-items: center;
   user-select: none;
-  .favoriteButton {
+  .favouriteButton {
     position: absolute;
     right: 2px;
     top: 0;
@@ -36,7 +36,7 @@ $header-height: 40px;
     background: transparent;
     color: #ddd;
   }
-  .favoriteButtonActive {
+  .favouriteButtonActive {
     svg {
       fill: #ddd;
     }

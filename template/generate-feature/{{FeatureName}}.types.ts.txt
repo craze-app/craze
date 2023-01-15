@@ -1,0 +1,4 @@
+export type {{FeatureName}}State = {
+  input: string
+  setInput: (input: string) => void
+}

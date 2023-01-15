@@ -46,5 +46,5 @@ yarn build:macos
 yarn build:win
 ```
 
-These commands will create the executable files for the corresponding platform in the project's `dist` folder.
+These commands will create the executable files for the corresponding platform in the project's `release` folder.
 

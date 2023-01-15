@@ -1,5 +1,5 @@
 .sidebar {
-  width: 250px;
+  width: 280px;
   height: 100vh;
   color: #fff;
   display: flex;
@@ -19,6 +19,7 @@
 .sidebarInside {
   flex: 1;
   overflow-y: auto;
+
   .menuItem {
     cursor: pointer;
     display: flex;
@@ -26,8 +27,17 @@
     height: 34px;
     padding: 0 16px;
     font-size: 13px;
+
     svg {
       margin-right: 8px;
+    }
+
+    .favouriteIcon {
+      margin-left: auto;
+
+      svg {
+        margin-right: 0;
+      }
     }
   }
 }
@@ -36,6 +46,7 @@
   margin: 0 10px 10px 10px;
   position: relative;
   display: flex;
+
   .sidebarSearchInput {
     flex: 1;
     height: 30px;
@@ -46,6 +57,7 @@
     color: #f6f6f6;
     font-size: 14px;
     outline: 0;
+
     &::placeholder {
       color: #aaa;
     }
