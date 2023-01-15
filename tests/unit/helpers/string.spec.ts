@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { convertBase64ToBlob, getCharPositionInText } from '../../../src/helpers/string'
+import { convertBase64ToBlob, getCharPositionInText, nl2br } from '../../../src/helpers/string'
 
 describe('getCharPositionInText', () => {
   it('should return undefined for negative char index', () => {
@@ -49,5 +49,13 @@ describe('convertBase64ToBlob', () => {
   it('handles invalid base64 input', () => {
     const base64Image = 'data:imag3e/png;badse64,'
     expect(() => convertBase64ToBlob(base64Image)).toThrowError()
+  })
+})
+
+describe('nl2br', () => {
+  it('nl2br function converts newlines to line breaks', () => {
+    const input = 'Hello\nworld!'
+    const output = 'Hello<br />world!'
+    expect(nl2br(input)).toBe(output)
   })
 })

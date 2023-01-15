@@ -36,3 +36,7 @@ export const convertBase64ToBlob = (base64Image: string) => {
     throw Error()
   }
 }
+
+export const nl2br = (text: string): string => {
+  return text.replace(/\n/g, '<br />')
+}

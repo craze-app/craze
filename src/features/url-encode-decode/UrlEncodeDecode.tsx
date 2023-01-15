@@ -15,6 +15,7 @@ import { UrlEncodeDecodeActions } from './UrlEncodeDecode.types'
 import 'ace-builds/src-noconflict/ext-language_tools'
 import 'ace-builds/src-noconflict/mode-text'
 import 'ace-builds/src-noconflict/theme-one_dark'
+import 'ace-builds/src-noconflict/ext-searchbox.js'
 
 const UrlEncodeDecode = ({ id }: FeatureRouteComponent) => {
   const { inputText, actionType, setInputText, setActionType } = useUrlEncodeDecodeStore()

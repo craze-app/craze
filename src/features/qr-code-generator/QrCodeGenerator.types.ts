@@ -3,11 +3,6 @@ export enum QrCodeImageExtensions {
   SVG = 'svg',
 }
 
-export enum QrCodeImageTemplates {
-  LIGHT = 'light',
-  DARK = 'dark',
-}
-
 export type QrCodeGeneratorState = {
   input: string
   dataUrl: string

@@ -24,3 +24,32 @@
   height: 300px;
   background: #fff;
 }
+
+.drawerSections {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  margin-top: 24px;
+  gap: 24px;
+
+  .drawerSection {
+    .sectionTitle {
+      font-size: 14px;
+      color: #fff;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .codeBlock {
+      padding: 8px;
+      background: #2a2e36;
+      color: #ccc;
+      font-size: 13px;
+      line-height: 24px;
+      display: block;
+      border-radius: 4px;
+      white-space:pre-wrap;
+      word-wrap:break-word
+    }
+  }
+}
