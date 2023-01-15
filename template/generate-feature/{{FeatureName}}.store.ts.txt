@@ -1,0 +1,10 @@
+import create from 'zustand'
+
+import { {{FeatureName}}State } from './{{FeatureName}}.types'
+
+export const use{{FeatureName}}Store = create<{{FeatureName}}State>((set) => ({
+  input: '',
+  setInput: (input) => {
+    set({ input })
+  },
+}))
