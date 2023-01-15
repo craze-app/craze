@@ -128,8 +128,9 @@ async function createWindow() {
 
         writeFileSync(`/tmp/craze-app/${arg.featureId}.html`, arg.text)
 
-        // @TODO: React could not access to file
-        return `file:///private/tmp/craze-app/${arg.featureId}.html`
+        return process.platform === 'darwin'
+          ? `file:///private/tmp/craze-app/${arg.featureId}.html`
+          : `file:///tmp/craze-app/${arg.featureId}.html`
       } catch (e: any) {
         return null
       }
