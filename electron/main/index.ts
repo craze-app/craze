@@ -45,8 +45,8 @@ async function createWindow() {
   win = new BrowserWindow({
     title: 'Main window',
     icon: join(process.env.PUBLIC, 'favicon.ico'),
-    transparent: true,
-    frame: false,
+    transparent: process.platform === 'darwin',
+    frame: process.platform !== 'darwin',
     vibrancy: 'ultra-dark',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
