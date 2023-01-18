@@ -7,6 +7,7 @@ import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
 import InputBar from '../../components/organisms/input-bar/InputBar'
 import OutputBar from '../../components/organisms/output-bar/OutputBar'
 import { FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './HtmlPreview.module.scss'
 import { htmlPreviewSample } from './HtmlPreview.sample'
 
@@ -48,7 +49,12 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
     <div className={styles.page}>
       <div className={styles.splitContainer}>
         <ReflexContainer orientation="vertical">
-          <ReflexElement className="pane" minSize={100}>
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 0, 60)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
             <InputBar
               onClickPaste={(text) => setInputText(text)}
               onClickClear={() => setInputText('')}
@@ -70,7 +76,12 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
             />
           </ReflexElement>
           <ReflexSplitter />
-          <ReflexElement className="pane" minSize={100}>
+          <ReflexElement
+            className="pane"
+            flex={loadElementSize(id, 1, 40)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
             <OutputBar rightComponent={<RenderOpenInBrowser />} />
             <iframe className={styles.htmlPreviewOutput} src={filePath}></iframe>
           </ReflexElement>
