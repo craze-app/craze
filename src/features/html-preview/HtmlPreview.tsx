@@ -72,10 +72,7 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
           <ReflexSplitter />
           <ReflexElement className="pane" minSize={100}>
             <OutputBar rightComponent={<RenderOpenInBrowser />} />
-            <iframe
-              style={{ flex: 1 }}
-              className={styles.htmlPreviewOutput}
-              src={filePath}></iframe>
+            <iframe className={styles.htmlPreviewOutput} src={filePath}></iframe>
           </ReflexElement>
         </ReflexContainer>
       </div>
