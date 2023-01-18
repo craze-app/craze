@@ -1,9 +1,8 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, ipcMain, IpcMainEvent, shell } from 'electron'
 
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
-import IpcMainEvent = Electron.IpcMainEvent
 
 // The built directory structure
 //
