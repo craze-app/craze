@@ -38,8 +38,6 @@ const Sidebar = (props: SidebarProps) => {
     return lodash.orderBy(list, ['isFavourite', 'index'], ['desc', 'asc'])
   }, [features, favouriteFeatures])
 
-  console.log(featuresList)
-
   const fuse = new Fuse(featuresList, fuseOptions)
   const results: SidebarItemWithFavouriteStatus[] = useMemo(() => {
     if (searchQuery === '') {
@@ -71,7 +69,7 @@ const Sidebar = (props: SidebarProps) => {
         />
         <div className={styles.sidebarSearchRight}>⌘+K</div>
       </div>
-      <div className={cn(styles.sidebarInside, styles.scrollbar)}>
+      <div className={cn(styles.sidebarInside, 'scrollbar')}>
         {results.map((Feature) => {
           return (
             <Link key={Feature.id} to={`/features/${Feature.id}`} className={styles.menuItem}>

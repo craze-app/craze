@@ -1,9 +1,17 @@
 import { FC } from 'react'
 
-import { IconBraces, IconRegex, IconTransform, IconUnlink, TablerIcon } from '@tabler/icons'
+import {
+  IconBraces,
+  IconQrcode,
+  IconRegex,
+  IconTransform,
+  IconUnlink,
+  TablerIcon,
+} from '@tabler/icons'
 
 import Base64String from './features/base64-string/Base64String'
 import JsonFormatter from './features/json-formatter/JsonFormatter'
+import QrCodeGenerator from './features/qr-code-generator/QrCodeGenerator'
 import RegexTester from './features/regex-tester/RegexTester'
 import UrlEncodeDecode from './features/url-encode-decode/UrlEncodeDecode'
 
@@ -35,5 +43,11 @@ export const features: Feature[] = [
     component: Base64String,
     title: 'Base64 String Encode/Decode',
     sidebarIcon: IconTransform,
+  },
+  {
+    id: 'qr-code-generator',
+    component: QrCodeGenerator,
+    title: 'QR Code Generator',
+    sidebarIcon: IconQrcode,
   },
 ]

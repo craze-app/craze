@@ -13,6 +13,7 @@ import { Base64StringActions } from './Base64String.types'
 import 'ace-builds/src-noconflict/mode-text'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/ext-searchbox.js'
 
 const Base64String = () => {
   const { inputText, actionType, setInputText, setActionType } = useBase64StringStore()

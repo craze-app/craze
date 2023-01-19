@@ -14,6 +14,7 @@ import { useJsonFormatterStore } from './JsonFormatter.store'
 import 'ace-builds/src-noconflict/mode-json'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/ext-searchbox.js'
 
 const JsonFormatter = ({ id }: FeatureRouteComponent) => {
   const { inputText, setInputText } = useJsonFormatterStore()

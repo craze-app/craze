@@ -1,9 +1,9 @@
 export class Base64StringService {
   static encode(text: string): string {
-    return btoa(text)
+    return window.btoa(text)
   }
 
   static decode(text: string): string {
-    return atob(text)
+    return window.atob(text)
   }
 }

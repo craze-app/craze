@@ -2,6 +2,10 @@
 @import './fonts';
 @import './resizer';
 @import './editor';
+@import "./scrollbar";
+@import "./drawer";
+
+@import "react-modern-drawer/dist/index.css";
 
 html,
 body {
