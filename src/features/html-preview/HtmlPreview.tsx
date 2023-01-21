@@ -38,11 +38,7 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
   }
 
   const RenderOpenInBrowser = () => {
-    return (
-      <button className={styles.button} onClick={openInBrowserAction}>
-        Open in browser
-      </button>
-    )
+    return <button onClick={openInBrowserAction}>Open in browser</button>
   }
 
   return (

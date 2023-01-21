@@ -27,9 +27,6 @@ const OutputBar = (props: OutputBarProps) => {
         'image/png': convertBase64ToBlob(props.copyValue),
       }),
     ])
-    if (props.copyValue !== undefined) {
-      await navigator.clipboard.writeText(props.copyValue)
-    }
   }
 
   return (
