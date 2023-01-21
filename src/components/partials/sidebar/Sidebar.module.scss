@@ -76,18 +76,3 @@
   color: #ddd;
   margin-right: 10px;
 }
-
-.scrollbar::-webkit-scrollbar-track {
-  border-radius: 10px;
-  background-color: transparent;
-}
-
-.scrollbar::-webkit-scrollbar {
-  width: 6px;
-  background-color: transparent;
-}
-
-.scrollbar::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #626b72;
-}

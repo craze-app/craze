@@ -1,8 +1,10 @@
-import { app, BrowserWindow, ipcMain, IpcMainEvent, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, IpcMainEvent, shell } from 'electron'
 
+import * as fs from 'fs'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import FileFilter = Electron.FileFilter
 
 // The built directory structure
 //
@@ -106,6 +108,30 @@ async function createWindow() {
       win.setAlwaysOnTop(true)
     }
   })
+
+  ipcMain.on(
+    'save-file-dialog',
+    (event, args: { content: string | NodeJS.ArrayBufferView; filters: FileFilter[] }) => {
+      dialog
+        .showSaveDialog({
+          title: 'Select the File Path to save',
+          defaultPath: app.getPath('downloads'),
+          buttonLabel: 'Save',
+          properties: [],
+          filters: args.filters,
+        })
+        .then((file) => {
+          if (!file.canceled) {
+            fs.writeFile(file.filePath.toString(), args.content, function (err) {
+              if (err) throw err
+            })
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+  )
 
   win.on('always-on-top-changed', (event, status) => {
     win.webContents.send('on-update-always-on-top', status)

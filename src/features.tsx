@@ -2,6 +2,8 @@ import { FC } from 'react'
 
 import {
   IconBraces,
+  IconFingerprint,
+  IconQrcode,
   IconCode,
   IconRegex,
   IconTransform,
@@ -10,8 +12,10 @@ import {
 } from '@tabler/icons'
 
 import Base64String from './features/base64-string/Base64String'
+import HashGenerator from './features/hash-generator/HashGenerator'
 import HtmlPreview from './features/html-preview/HtmlPreview'
 import JsonFormatter from './features/json-formatter/JsonFormatter'
+import QrCodeGenerator from './features/qr-code-generator/QrCodeGenerator'
 import RegexTester from './features/regex-tester/RegexTester'
 import UrlEncodeDecode from './features/url-encode-decode/UrlEncodeDecode'
 
@@ -39,4 +43,16 @@ export const features: Feature[] = [
   },
   { id: 'regex-tester', component: RegexTester, title: 'Regex Tester', sidebarIcon: IconRegex },
   { id: 'html-preview', component: HtmlPreview, title: 'HTML Preview', sidebarIcon: IconCode },
+  {
+    id: 'qr-code-generator',
+    component: QrCodeGenerator,
+    title: 'QR Code Generator',
+    sidebarIcon: IconQrcode,
+  },
+  {
+    id: 'hash-generator',
+    component: HashGenerator,
+    title: 'Hash Generator',
+    sidebarIcon: IconFingerprint,
+  },
 ]
