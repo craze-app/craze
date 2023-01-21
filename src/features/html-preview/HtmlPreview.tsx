@@ -10,14 +10,16 @@ import { FeatureRouteComponent } from '../../features'
 import { loadElementSize, saveElementSize } from '../../helpers/resize'
 import styles from './HtmlPreview.module.scss'
 import { htmlPreviewSample } from './HtmlPreview.sample'
+import { useHtmlPreviewStore } from './HtmlPreview.store'
 
 import 'ace-builds/src-noconflict/mode-html'
 import 'ace-builds/src-noconflict/theme-one_dark'
 import 'ace-builds/src-noconflict/ext-language_tools'
+import 'ace-builds/src-noconflict/ext-searchbox.js'
 
 const HtmlPreview = ({ id }: FeatureRouteComponent) => {
-  const [inputText, setInputText] = useState<string>('')
-  const [filePath, setFilePath] = useState<string>('')
+  const { inputText, setInputText, filePath, setFilePath } = useHtmlPreviewStore()
+  const [outputKey, setOutputKey] = useState<number>(Math.random)
 
   useMemo(() => {
     if (inputText === '') {
@@ -29,6 +31,7 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
       .then((result: string | null) => {
         if (result !== null) {
           setFilePath(result)
+          setOutputKey(Math.random)
         }
       })
   }, [inputText])
@@ -79,7 +82,7 @@ const HtmlPreview = ({ id }: FeatureRouteComponent) => {
               saveElementSize(id, 1, component.props.flex as number)
             }>
             <OutputBar rightComponent={<RenderOpenInBrowser />} />
-            <iframe className={styles.htmlPreviewOutput} src={filePath}></iframe>
+            <iframe key={outputKey} className={styles.htmlPreviewOutput} src={filePath}></iframe>
           </ReflexElement>
         </ReflexContainer>
       </div>
