@@ -1,0 +1,18 @@
+.text-input {
+  padding: 8px 12px;
+  background: #2a2e36;
+  color: #ddd;
+  font-size: 14px;
+  display: block;
+  border: 0;
+  border-radius: 4px;
+  outline: 0;
+  width: calc(100% - 24px);
+}
+
+.text-input-label {
+  font-size: 13px;
+  color: #fff;
+  margin-bottom: 8px;
+  font-weight: 600;
+}

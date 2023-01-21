@@ -4,6 +4,7 @@
 @import './editor';
 @import "./scrollbar";
 @import "./drawer";
+@import "./form";
 
 @import "react-modern-drawer/dist/index.css";
 
@@ -33,22 +34,4 @@ body {
   color: #f1f1f1;
   font-weight: 400;
   font-size: 15px;
-}
-
-.reflex-container.horizontal {
-  .pane {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-.reflex-container.vertical {
-  .pane {
-    width: 100%;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
 }
