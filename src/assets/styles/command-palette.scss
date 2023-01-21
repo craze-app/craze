@@ -1,0 +1,14 @@
+@import "react-cmdk/dist/cmdk.css";
+
+.command-palette {
+  z-index: 150;
+  .command-palette-content {
+
+  }
+  .command-palette-list-item {
+    span {
+      color: #fff !important;
+      font-size: 13px;
+    }
+  }
+}
