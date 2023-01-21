@@ -2,9 +2,9 @@ import { FC } from 'react'
 
 import {
   IconBraces,
+  IconCode,
   IconFingerprint,
   IconQrcode,
-  IconCode,
   IconRegex,
   IconTransform,
   IconUnlink,
@@ -42,6 +42,12 @@ export const features: Feature[] = [
     sidebarIcon: IconUnlink,
   },
   { id: 'regex-tester', component: RegexTester, title: 'Regex Tester', sidebarIcon: IconRegex },
+  {
+    id: 'base64-string',
+    component: Base64String,
+    title: 'Base64 String Encode/Decode',
+    sidebarIcon: IconTransform,
+  },
   { id: 'html-preview', component: HtmlPreview, title: 'HTML Preview', sidebarIcon: IconCode },
   {
     id: 'qr-code-generator',

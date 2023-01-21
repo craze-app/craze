@@ -157,7 +157,7 @@ async function createWindow() {
         writeFileSync(file, arg.text)
 
         return process.platform === 'darwin' ? `file:///private/${file}` : file
-      } catch (e: any) {
+      } catch (e: unknown) {
         return null
       }
     }
