@@ -9,13 +9,14 @@ import HomePage from './pages/HomePage'
 const Router = () => {
   return (
     <HashRouter>
-      <Switch>
-        <MainLayout>
-          <Route exact path={'/'} component={HomePage} />
-          <Route path={'/features/:id'} component={FeaturePage} />
-        </MainLayout>
-      </Switch>
-      <CommandPalette />
+      <CommandPalette>
+        <Switch>
+          <MainLayout>
+            <Route exact path={'/'} component={HomePage} />
+            <Route path={'/features/:id'} component={FeaturePage} />
+          </MainLayout>
+        </Switch>
+      </CommandPalette>
     </HashRouter>
   )
 }
