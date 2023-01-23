@@ -1,6 +1,7 @@
-import { app, BrowserWindow, dialog, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, IpcMainEvent, shell } from 'electron'
 
 import * as fs from 'fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import FileFilter = Electron.FileFilter
@@ -58,6 +59,7 @@ async function createWindow() {
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       nodeIntegration: true,
       contextIsolation: false,
+      webSecurity: false,
     },
     width: 1000,
     height: 600,
@@ -133,6 +135,32 @@ async function createWindow() {
 
   win.on('always-on-top-changed', (event, status) => {
     win.webContents.send('on-update-always-on-top', status)
+  })
+
+  type WriteToTextFile = {
+    featureId: string
+    text: string
+  }
+
+  ipcMain.handle('write-text-to-file', (event: IpcMainEvent, ...args: WriteToTextFile[]) => {
+    const arg = args[0]
+
+    if (arg.featureId !== undefined && arg.featureId === 'html-preview') {
+      try {
+        const tempFolder = join(app.getPath('temp'), 'craze-app')
+        if (!existsSync(tempFolder)) {
+          mkdirSync(tempFolder)
+        }
+
+        const file = join(tempFolder, `${arg.featureId}.html`)
+
+        writeFileSync(file, arg.text)
+
+        return process.platform === 'darwin' ? `file:///private/${file}` : file
+      } catch (e: unknown) {
+        return null
+      }
+    }
   })
 }
 

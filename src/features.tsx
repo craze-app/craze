@@ -2,6 +2,7 @@ import { FC } from 'react'
 
 import {
   IconBraces,
+  IconCode,
   IconFingerprint,
   IconQrcode,
   IconRegex,
@@ -12,6 +13,7 @@ import {
 
 import Base64String from './features/base64-string/Base64String'
 import HashGenerator from './features/hash-generator/HashGenerator'
+import HtmlPreview from './features/html-preview/HtmlPreview'
 import JsonFormatter from './features/json-formatter/JsonFormatter'
 import QrCodeGenerator from './features/qr-code-generator/QrCodeGenerator'
 import RegexTester from './features/regex-tester/RegexTester'
@@ -46,6 +48,7 @@ export const features: Feature[] = [
     title: 'Base64 String Encode/Decode',
     sidebarIcon: IconTransform,
   },
+  { id: 'html-preview', component: HtmlPreview, title: 'HTML Preview', sidebarIcon: IconCode },
   {
     id: 'qr-code-generator',
     component: QrCodeGenerator,

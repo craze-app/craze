@@ -5,7 +5,7 @@ import styles from './OutputBar.module.scss'
 
 type OutputBarProps = {
   label?: string
-  copyValue: string
+  copyValue?: string
   copyValueImage?: boolean
   customButtons?: Array<{ key: string; label: string; onClick: () => void }>
   rightComponent?: ReactNode
@@ -33,7 +33,9 @@ const OutputBar = (props: OutputBarProps) => {
     <div className={styles.outputBar}>
       <div className={styles.title}>{props.label || 'Output'}:</div>
       <div className={styles.buttons}>
-        <button onClick={onClickCopyHandler}>Copy Clipboard</button>
+        {props.copyValue !== undefined && (
+          <button onClick={onClickCopyHandler}>Copy Clipboard</button>
+        )}
         {props.customButtons &&
           props.customButtons.map((button) => (
             <button key={button.key} onClick={button.onClick}>
