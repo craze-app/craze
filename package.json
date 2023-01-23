@@ -52,6 +52,7 @@
     "fuse.js": "^6.6.2",
     "jest": "^29.3.1",
     "jest-environment-jsdom": "^29.3.1",
+    "kbar": "^0.1.0-beta.39",
     "lodash": "^4.17.21",
     "patch-package": "^6.5.1",
     "postinstall-postinstall": "^2.1.0",

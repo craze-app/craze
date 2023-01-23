@@ -67,7 +67,9 @@ const Sidebar = (props: SidebarProps) => {
           className={styles.sidebarSearchInput}
           placeholder="Search..."
         />
-        <div className={styles.sidebarSearchRight}>⌘+K</div>
+        <div className={styles.sidebarSearchRight}>
+          {process.platform === 'darwin' ? `⌘+K` : 'Ctrl+K'}
+        </div>
       </div>
       <div className={cn(styles.sidebarInside, 'scrollbar')}>
         {results.map((Feature) => {

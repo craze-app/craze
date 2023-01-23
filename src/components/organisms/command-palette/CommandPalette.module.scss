@@ -1,0 +1,25 @@
+.search {
+  padding: 12px 16px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  background: rgb(28 28 29);
+  color: rgba(252 252 252 / 0.9);
+}
+
+.animator {
+  max-width: 600px;
+  width: 100%;
+  background: rgb(28 28 29);
+  color: rgba(252 252 252 / 0.9);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 50%) 0 16px 70px;
+}
+
+.positioner {
+  z-index: 150;
+  background: rgba(0,0,0,0.4)
+}
