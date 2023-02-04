@@ -1,0 +1,16 @@
+.page {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
+.splitContainer {
+  position: relative;
+  width: 100%;
+  flex: 1;
+}
+
+.htmlPreviewOutput {
+  flex: 1;
+  background: #ffffff;
+}

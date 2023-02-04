@@ -1,0 +1,14 @@
+.EZDrawer__container {
+  background-color: #202932 !important;
+  color: #fff;
+  overflow-y: auto;
+  @extend .scrollbar
+}
+
+.drawer-header {
+  display: flex;
+  border-bottom: 1px solid #333;
+  padding: 16px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}

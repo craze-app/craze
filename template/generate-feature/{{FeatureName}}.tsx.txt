@@ -1,0 +1,44 @@
+import { ReflexContainer, ReflexElement, ReflexSplitter } from 'react-reflex'
+
+import InputBar from '../../components/organisms/input-bar/InputBar'
+import OutputBar from '../../components/organisms/output-bar/OutputBar'
+import { FeatureRouteComponent } from '../../features'
+import { loadElementSize, saveElementSize } from '../../helpers/resize'
+import styles from './{{FeatureName}}.module.scss'
+import { {{featureName}}Sample } from './{{FeatureName}}.sample'
+import { {{FeatureName}}Service } from './{{FeatureName}}.service'
+import { use{{FeatureName}}Store } from './{{FeatureName}}.store'
+
+const {{FeatureName}} = ({ id }: FeatureRouteComponent) => {
+  const { input, setInput } = use{{FeatureName}}Store()
+
+  return (
+    <div className={styles.page}>
+      <div className={styles.splitContainer}>
+        <ReflexContainer orientation="horizontal">
+          <ReflexElement
+            className="pane"
+            minSize={100}
+            flex={loadElementSize(id, 0, 50)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 0, component.props.flex as number)
+            }>
+            {/* Add InputBar component here */}
+          </ReflexElement>
+          <ReflexSplitter />
+          <ReflexElement
+            className="pane"
+            minSize={100}
+            flex={loadElementSize(id, 1, 50)}
+            onStopResize={({ component }) =>
+              saveElementSize(id, 1, component.props.flex as number)
+            }>
+            {/* Add OutputBar component here */}
+          </ReflexElement>
+        </ReflexContainer>
+      </div>
+    </div>
+  )
+}
+
+export default {{FeatureName}}

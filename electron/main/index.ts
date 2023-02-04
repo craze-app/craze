@@ -1,7 +1,11 @@
-import { app, BrowserWindow, ipcMain, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, IpcMainEvent, Menu, shell } from 'electron'
 
+import * as fs from 'fs'
+import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
+import FileFilter = Electron.FileFilter
+import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions
 
 // The built directory structure
 //
@@ -45,8 +49,8 @@ async function createWindow() {
   win = new BrowserWindow({
     title: 'Main window',
     icon: join(process.env.PUBLIC, 'favicon.ico'),
-    transparent: true,
-    frame: false,
+    transparent: process.platform === 'darwin',
+    frame: process.platform !== 'darwin',
     vibrancy: 'ultra-dark',
     titleBarStyle: 'hiddenInset',
     webPreferences: {
@@ -56,7 +60,10 @@ async function createWindow() {
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       nodeIntegration: true,
       contextIsolation: false,
+      webSecurity: false,
     },
+    width: 1000,
+    height: 600,
   })
 
   if (process.env.VITE_DEV_SERVER_URL) {
@@ -85,6 +92,98 @@ async function createWindow() {
 
   app.on('browser-window-blur', () => {
     win.webContents.send('blurred')
+  })
+
+  ipcMain.on('toggle-maximize', () => {
+    if (win.isMaximized()) {
+      win.unmaximize()
+    } else {
+      win.maximize()
+    }
+  })
+
+  ipcMain.on('toggle-always-on-top', () => {
+    if (win.isAlwaysOnTop()) {
+      win.setAlwaysOnTop(false)
+    } else {
+      win.setAlwaysOnTop(true)
+    }
+  })
+
+  ipcMain.on(
+    'save-file-dialog',
+    (event, args: { content: string | NodeJS.ArrayBufferView; filters: FileFilter[] }) => {
+      dialog
+        .showSaveDialog({
+          title: 'Select the File Path to save',
+          defaultPath: app.getPath('downloads'),
+          buttonLabel: 'Save',
+          properties: [],
+          filters: args.filters,
+        })
+        .then((file) => {
+          if (!file.canceled) {
+            fs.writeFile(file.filePath.toString(), args.content, function (err) {
+              if (err) throw err
+            })
+          }
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+    },
+  )
+
+  const menuTemplate: Array<MenuItemConstructorOptions> = [
+    { role: 'appMenu' },
+    { role: 'fileMenu' },
+    { role: 'editMenu' },
+    { role: 'viewMenu' },
+    { role: 'windowMenu' },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click: async () => {
+            await shell.openExternal('https://github.com/craze-app/craze')
+          },
+        },
+      ],
+    },
+  ]
+
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
+
+  win.on('always-on-top-changed', (event, status) => {
+    win.webContents.send('on-update-always-on-top', status)
+  })
+
+  type WriteToTextFile = {
+    featureId: string
+    text: string
+  }
+
+  ipcMain.handle('write-text-to-file', (event: IpcMainEvent, ...args: WriteToTextFile[]) => {
+    const arg = args[0]
+
+    if (arg.featureId !== undefined && arg.featureId === 'html-preview') {
+      try {
+        const tempFolder = join(app.getPath('temp'), 'craze-app')
+        if (!existsSync(tempFolder)) {
+          mkdirSync(tempFolder)
+        }
+
+        const file = join(tempFolder, `${arg.featureId}.html`)
+
+        writeFileSync(file, arg.text)
+
+        return process.platform === 'darwin' ? `file:///private/${file}` : file
+      } catch (e: unknown) {
+        return null
+      }
+    }
   })
 }
 

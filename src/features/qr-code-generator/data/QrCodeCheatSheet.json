@@ -1,0 +1,32 @@
+{
+  "cheatsheet": [
+    {
+      "name": "URL",
+      "content": "https://example.com"
+    },
+    {
+      "name": "Phone Number",
+      "content": "tel:33333333333"
+    },
+    {
+      "name": "SMS",
+      "content": "SMSTO:33333333333:good morning"
+    },
+    {
+      "name": "Email",
+      "content": "mailto:email@example.com?subject=email subject&body=Email text"
+    },
+    {
+      "name": "vCard",
+      "content": "BEGIN:VCARD\nVERSION:2.1\nFN:Full name\nN:Last name;First name\nTITLE:Your Title\nTEL;CELL:mobile-phone-number\nTEL;WORK;VOICE:business-phone-number\nTEL;HOME;VOICE:personal-phone-number\nEMAIL;HOME;INTERNET:personal-email@example.com\nEMAIL;WORK;INTERNET:business-email@exapmel.com\nURL:https://example.com\nADR:;;address street;City name;;000000;Country name\nORG:Company name\nEND:VCARD"
+    },
+    {
+      "name": "Event",
+      "content": "BEGIN:VEVENT\nSUMMARY:event description\nDTSTART:20201231T170000Z\nDTEND:20210101T170000Z\nEND:VEVENT"
+    },
+    {
+      "name": "WiFi",
+      "content": "WIFI:T:WPA;S:NETWORK_NAME;P:PASSWORD;H:;"
+    }
+  ]
+}

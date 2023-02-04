@@ -1,0 +1,50 @@
+.item {
+  padding: 12px 16px;
+  background: transparent;
+  border-left: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.activeItem {
+  background: rgb(53 53 54);
+  border-left-color: rgba(252 252 252 / 0.9);
+}
+
+.itemBox {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.shortcut {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 4px;
+  kbd {
+    padding: 4px 6px;
+    background: rgba(0 0 0 / 0.1);
+    font-size: 14px;
+  }
+}
+
+.ancestor1 {
+  opacity: 0.5;
+  margin-right: 8px;
+}
+
+.ancestor2 {
+  margin-right: 8px;
+}
+
+.subtitle {
+  font-size: 12px;
+}
