@@ -1,8 +1,9 @@
 import { ipcRenderer } from 'electron'
 
 import { useEffect, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 
-import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
+import { IconHeart, IconHome2, IconPinned } from '@tabler/icons'
 import cn from 'classnames'
 
 import { Feature } from '../../../features'
@@ -14,6 +15,7 @@ type FeatureHeaderProps = {
 }
 
 const FeatureHeader = (props: FeatureHeaderProps) => {
+  const history = useHistory()
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState<boolean>(false)
 
   const onUpdateAlwaysOnTop = (event: unknown, status: boolean) => {
@@ -38,11 +40,15 @@ const FeatureHeader = (props: FeatureHeaderProps) => {
     ipcRenderer.send('toggle-always-on-top')
   }
 
+  const goToHomePage = () => {
+    history.push('/')
+  }
+
   return (
     <div className={cn(styles.header, 'draggable-area')} onDoubleClick={onDoubleClick}>
       <div className={cn(styles.buttons, styles.leftButtons)}>
-        <button>
-          <IconLayoutColumns size={18} />
+        <button onClick={goToHomePage}>
+          <IconHome2 size={18} />
         </button>
       </div>
       <div className={styles.featureName}>

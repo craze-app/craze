@@ -1,8 +1,9 @@
 import { useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
-import FeatureHeader from '../components/organisms/feature-header/FeatureHeader'
-import { features } from '../features'
+import FeatureHeader from '../../components/organisms/feature-header/FeatureHeader'
+import { features } from '../../features'
+import styles from './Feature.module.scss'
 
 const FeaturePage = () => {
   const { id } = useParams<{ id: string }>()
@@ -18,7 +19,7 @@ const FeaturePage = () => {
   return (
     <>
       <FeatureHeader feature={feature} />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: 12 }}>
+      <div className={styles.featureContainer}>
         <feature.component key={feature.id} id={feature.id} />
       </div>
     </>

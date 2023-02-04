@@ -1,0 +1,36 @@
+.page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  padding: 60px 50px 0;
+}
+
+.box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .subtitle {
+    margin-top: 16px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ddd;
+  }
+  .list {
+    margin-top: 32px;
+    li {
+      color: #ddd;
+      margin-bottom: 12px;
+    font-size: 14px;
+      line-height: 20px;
+    }
+  }
+}
