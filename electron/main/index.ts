@@ -1,10 +1,11 @@
-import { app, BrowserWindow, dialog, ipcMain, IpcMainEvent, shell } from 'electron'
+import { app, BrowserWindow, dialog, ipcMain, IpcMainEvent, Menu, shell } from 'electron'
 
 import * as fs from 'fs'
 import { existsSync, mkdirSync, writeFileSync } from 'node:fs'
 import { release } from 'node:os'
 import { join } from 'node:path'
 import FileFilter = Electron.FileFilter
+import MenuItemConstructorOptions = Electron.MenuItemConstructorOptions
 
 // The built directory structure
 //
@@ -132,6 +133,28 @@ async function createWindow() {
         })
     },
   )
+
+  const menuTemplate: Array<MenuItemConstructorOptions> = [
+    { role: 'appMenu' },
+    { role: 'fileMenu' },
+    { role: 'editMenu' },
+    { role: 'viewMenu' },
+    { role: 'windowMenu' },
+    {
+      role: 'help',
+      submenu: [
+        {
+          label: 'Learn More',
+          click: async () => {
+            await shell.openExternal('https://github.com/craze-app/craze')
+          },
+        },
+      ],
+    },
+  ]
+
+  const menu = Menu.buildFromTemplate(menuTemplate)
+  Menu.setApplicationMenu(menu)
 
   win.on('always-on-top-changed', (event, status) => {
     win.webContents.send('on-update-always-on-top', status)
