@@ -21,12 +21,6 @@ jobs:
         with:
           node-version: 14.18.0
 
-      - name: Install Snapcraft
-        uses: samuelmeuli/action-snapcraft@v1
-        if: startsWith(matrix.os, 'ubuntu')
-        with:
-          snapcraft_token: ${{ secrets.snapcraft_token }}
-
       - name: Build/release Electron app
         uses: samuelmeuli/action-electron-builder@v1
         with:
