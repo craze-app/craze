@@ -9,6 +9,7 @@
 ## 🚀 Contributing
 
 We welcome contributions to this project! If you're interested in contributing, please take a look at our [CONTRIBUTING.md](./docs/CONTRIBUTING-en.md) file for more information. We also have separate contributing guidelines available in other languages:
+- [English](./docs/CONTRIBUTING-en.md)
 - [Turkish](./docs/CONTRIBUTING-tr.md)
 
 Thanks for considering a contribution to this project! ⭐️
