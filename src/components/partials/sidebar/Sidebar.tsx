@@ -76,7 +76,7 @@ const Sidebar = (props: SidebarProps) => {
           return (
             <Link key={Feature.id} to={`/features/${Feature.id}`} className={styles.menuItem}>
               <Feature.sidebarIcon className={''} size={16} />
-              {Feature.title}
+              <span>{Feature.title}</span>
               {Feature.isFavourite && (
                 <div className={styles.favouriteIcon}>
                   <IconHeart size={13} />

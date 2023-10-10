@@ -1,11 +1,17 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 
 import FeatureHeader from '../components/organisms/feature-header/FeatureHeader'
 import { features } from '../features'
+import { useLastUsedFeatureStore } from '../stores/LastUsedFeatureStore'
 
 const FeaturePage = () => {
   const { id } = useParams<{ id: string }>()
+  const { updateLastUsedFeature } = useLastUsedFeatureStore()
+
+  useEffect(() => {
+    updateLastUsedFeature(id)
+  }, [id])
 
   const feature = useMemo(() => {
     return features.find((f) => f.id === id)
