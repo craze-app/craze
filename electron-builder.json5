@@ -2,7 +2,7 @@
  * @see https://www.electron.build/configuration/configuration
  */
 {
-  "appId": "YourAppID",
+  "appId": "com.arkkod.craze",
   "asar": true,
   "icon": "public/favicon.ico",
   "directories": {
@@ -17,17 +17,6 @@
     "target": [
       "dmg"
     ]
-  },
-  "win": {
-    "target": [
-      {
-        "target": "nsis",
-        "arch": [
-          "x64"
-        ]
-      }
-    ],
-    "artifactName": "${productName}_${version}.${ext}"
   },
   "linux": {
     "icon": "public/favicon-256x256.png",
