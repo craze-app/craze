@@ -40,11 +40,6 @@ const FeatureHeader = (props: FeatureHeaderProps) => {
 
   return (
     <div className={cn(styles.header, 'draggable-area')} onDoubleClick={onDoubleClick}>
-      <div className={cn(styles.buttons, styles.leftButtons)}>
-        <button>
-          <IconLayoutColumns size={18} />
-        </button>
-      </div>
       <div className={styles.featureName}>
         {props.feature.title}
         <button
