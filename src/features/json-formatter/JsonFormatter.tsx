@@ -60,6 +60,8 @@ const JsonFormatter = ({ id }: FeatureRouteComponent) => {
               name="json-formatter-input"
               editorProps={{ $blockScrolling: true }}
               wrapEnabled={true}
+              showGutter={false}
+              showPrintMargin={false}
               placeholder={'Type JSON...'}
             />
           </ReflexElement>
