@@ -2,7 +2,7 @@ import { ipcRenderer } from 'electron'
 
 import { useEffect, useState } from 'react'
 
-import { IconHeart, IconLayoutColumns, IconPinned } from '@tabler/icons'
+import { IconHeart, IconPinned } from '@tabler/icons'
 import cn from 'classnames'
 
 import { Feature } from '../../../features'
