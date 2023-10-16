@@ -18,6 +18,17 @@
       "dmg"
     ]
   },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "${productName}_${version}.${ext}"
+  },
   "linux": {
     "icon": "public/favicon-256x256.png",
     "target": [
